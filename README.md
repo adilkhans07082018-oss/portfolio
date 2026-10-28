@@ -1,5 +1,7 @@
 # Mohd Aadil — Developer & Graphic Designer Portfolio
 
+> 🌐 **Live Website**: [https://adilkhans07082018-oss.github.io/portfolio/](https://adilkhans07082018-oss.github.io/portfolio/)
+
 A modern, responsive, high-performance portfolio website built for **Mohd Aadil** (Website Developer & Graphic Designer) based on professional qualifications, agency experience, and technical proficiencies.
 
 ---
