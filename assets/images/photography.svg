@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="photoBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+    <linearGradient id="cameraGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ec4899" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+    <filter id="shadowPh" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#photoBg)"/>
+
+  <!-- Browser Window Wrapper -->
+  <g transform="translate(40, 30)" filter="url(#shadowPh)">
+    <!-- Header -->
+    <rect width="720" height="40" rx="8" fill="#1e293b"/>
+    <rect y="32" width="720" height="8" fill="#1e293b"/>
+    <circle cx="25" cy="20" r="5.5" fill="#ef4444"/>
+    <circle cx="45" cy="20" r="5.5" fill="#f59e0b"/>
+    <circle cx="65" cy="20" r="5.5" fill="#10b981"/>
+    
+    <rect x="110" y="9" width="380" height="22" rx="5" fill="#0f172a"/>
+    <text x="130" y="24" font-family="'Inter', sans-serif" font-size="11" fill="#cbd5e1">https://mohdaadil.gallery/photography</text>
+
+    <!-- Content -->
+    <g transform="translate(0, 40)">
+      <rect width="720" height="390" fill="#0b0f19"/>
+      
+      <!-- Top Brand Bar -->
+      <rect width="720" height="50" fill="#111827"/>
+      <line x1="0" y1="50" x2="720" y2="50" stroke="#1f2937" stroke-width="1"/>
+
+      <text x="40" y="32" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="800" fill="#f8fafc">PORTRAIT &amp; PRODUCT <tspan fill="#ec4899">STUDIO</tspan></text>
+      <text x="480" y="31" font-family="'Inter', sans-serif" font-size="11" fill="#94a3b8">LIGHTROOM</text>
+      <text x="560" y="31" font-family="'Inter', sans-serif" font-size="11" fill="#94a3b8">COLOR GRADING</text>
+      <text x="660" y="31" font-family="'Inter', sans-serif" font-size="11" fill="#ec4899">STUDIO 4K</text>
+
+      <!-- Photography Gallery Grid -->
+      <g transform="translate(40, 70)">
+        <!-- Photo 1: Portrait Tone -->
+        <g transform="translate(0, 0)">
+          <rect width="200" height="275" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+          <!-- Image placeholder with warm sunset portrait tones -->
+          <rect x="10" y="10" width="180" height="190" rx="6" fill="#2d1b2a"/>
+          <circle cx="100" cy="85" r="45" fill="#f43f5e" opacity="0.3"/>
+          <circle cx="100" cy="70" r="28" fill="#fda4af" opacity="0.7"/>
+          <path d="M60,160 Q100,105 140,160 Z" fill="#e11d48" opacity="0.6"/>
+          
+          <text x="15" y="222" font-family="'Inter', sans-serif" font-size="12" font-weight="700" fill="#ffffff">Cinematic Portraiture</text>
+          <text x="15" y="238" font-family="'Inter', sans-serif" font-size="10" fill="#94a3b8">Natural lighting &amp; editorial focus</text>
+          <text x="15" y="258" font-family="'Inter', sans-serif" font-size="9" font-weight="600" fill="#f472b6">50mm f/1.8 &bull; Adobe Lightroom</text>
+        </g>
+
+        <!-- Photo 2: Product Photography -->
+        <g transform="translate(220, 0)">
+          <rect width="200" height="275" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+          <rect x="10" y="10" width="180" height="190" rx="6" fill="#112233"/>
+          <ellipse cx="100" cy="120" rx="60" ry="25" fill="#0284c7" opacity="0.4"/>
+          <!-- Product silhouette -->
+          <rect x="75" y="45" width="50" height="90" rx="8" fill="#38bdf8"/>
+          <rect x="85" y="32" width="30" height="15" rx="3" fill="#cbd5e1"/>
+          
+          <text x="15" y="222" font-family="'Inter', sans-serif" font-size="12" font-weight="700" fill="#ffffff">Commercial Product Studio</text>
+          <text x="15" y="238" font-family="'Inter', sans-serif" font-size="10" fill="#94a3b8">E-Commerce &amp; branding imagery</text>
+          <text x="15" y="258" font-family="'Inter', sans-serif" font-size="9" font-weight="600" fill="#38bdf8">Studio Flash &bull; Photoshop Retouching</text>
+        </g>
+
+        <!-- Photo 3: Creative Lighting -->
+        <g transform="translate(440, 0)">
+          <rect width="200" height="275" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+          <rect x="10" y="10" width="180" height="190" rx="6" fill="#161b2e"/>
+          <circle cx="80" cy="90" r="50" fill="#8b5cf6" opacity="0.4"/>
+          <circle cx="120" cy="100" r="40" fill="#06b6d4" opacity="0.4"/>
+          <!-- Camera lens icon -->
+          <circle cx="100" cy="95" r="28" fill="#0f172a" stroke="#a855f7" stroke-width="3"/>
+          <circle cx="100" cy="95" r="14" fill="#38bdf8"/>
+          
+          <text x="15" y="222" font-family="'Inter', sans-serif" font-size="12" font-weight="700" fill="#ffffff">Brand Creative Directing</text>
+          <text x="15" y="238" font-family="'Inter', sans-serif" font-size="10" fill="#94a3b8">Visual storytelling &amp; corporate assets</text>
+          <text x="15" y="258" font-family="'Inter', sans-serif" font-size="9" font-weight="600" fill="#c084fc">High-Res Brand Production</text>
+        </g>
+      </g>
+
+      <!-- Bottom Bar -->
+      <rect y="365" width="720" height="25" fill="#090d16"/>
+      <text x="360" y="381" font-family="'Inter', sans-serif" font-size="10" fill="#64748b" text-anchor="middle">Mohd Aadil &bull; Professional Portrait &amp; Commercial Photography for Corporate &amp; Brand Media</text>
+    </g>
+  </g>
+</svg>

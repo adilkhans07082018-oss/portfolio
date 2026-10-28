@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="pwBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#d4af37" />
+      <stop offset="50%" stop-color="#fef08a" />
+      <stop offset="100%" stop-color="#b45309" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1f2937" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#pwBg)"/>
+
+  <!-- Browser Window Wrapper -->
+  <g transform="translate(40, 30)" filter="url(#shadow)">
+    <!-- Browser Header -->
+    <rect width="720" height="40" rx="8" fill="#1e293b"/>
+    <rect y="32" width="720" height="8" fill="#1e293b"/>
+    <!-- Window Dots -->
+    <circle cx="25" cy="20" r="5.5" fill="#ef4444"/>
+    <circle cx="45" cy="20" r="5.5" fill="#f59e0b"/>
+    <circle cx="65" cy="20" r="5.5" fill="#10b981"/>
+    <!-- URL Bar -->
+    <rect x="110" y="9" width="380" height="22" rx="5" fill="#0f172a"/>
+    <text x="130" y="24" font-family="'Inter', sans-serif" font-size="11" fill="#94a3b8">https://paulwalter.com</text>
+    <rect x="660" y="14" width="30" height="12" rx="3" fill="#334155"/>
+
+    <!-- Website Body -->
+    <g transform="translate(0, 40)">
+      <rect width="720" height="390" fill="#0b0f19"/>
+      
+      <!-- Navbar -->
+      <line x1="0" y1="50" x2="720" y2="50" stroke="#1e293b" stroke-width="1"/>
+      <text x="40" y="33" font-family="'Plus Jakarta Sans', serif" font-size="18" font-weight="800" fill="url(#gold)" letter-spacing="3">PAUL WALTER</text>
+      
+      <text x="320" y="32" font-family="'Inter', sans-serif" font-size="11" fill="#cbd5e1" font-weight="500">COLLECTIONS</text>
+      <text x="420" y="32" font-family="'Inter', sans-serif" font-size="11" fill="#94a3b8">ATELIER</text>
+      <text x="490" y="32" font-family="'Inter', sans-serif" font-size="11" fill="#94a3b8">HERITAGE</text>
+      <text x="570" y="32" font-family="'Inter', sans-serif" font-size="11" fill="#94a3b8">STORE</text>
+
+      <!-- Cart Icon / CTA -->
+      <rect x="635" y="18" width="55" height="24" rx="12" fill="#d4af37"/>
+      <text x="662" y="34" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#0f172a" text-anchor="middle">BAG (0)</text>
+
+      <!-- Hero Section -->
+      <g transform="translate(40, 75)">
+        <!-- Left Hero Text -->
+        <text x="0" y="35" font-family="'Inter', sans-serif" font-size="11" font-weight="700" fill="#d4af37" letter-spacing="2">AUTUMN / WINTER 2026</text>
+        <text x="0" y="80" font-family="'Plus Jakarta Sans', sans-serif" font-size="34" font-weight="900" fill="#ffffff" letter-spacing="1">TIMELESS</text>
+        <text x="0" y="120" font-family="'Plus Jakarta Sans', sans-serif" font-size="34" font-weight="900" fill="#ffffff" letter-spacing="1">ELEGANCE.</text>
+        
+        <text x="0" y="155" font-family="'Inter', sans-serif" font-size="12" fill="#94a3b8">Bespoke craftsmanship tailored for the modern connoisseur.</text>
+        <text x="0" y="175" font-family="'Inter', sans-serif" font-size="12" fill="#94a3b8">Designed with precision &amp; architectural perfection.</text>
+
+        <!-- CTA Button -->
+        <rect x="0" y="200" width="140" height="36" rx="6" fill="#ffffff"/>
+        <text x="70" y="223" font-family="'Inter', sans-serif" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">DISCOVER NOW &#8594;</text>
+
+        <!-- Right Side: Luxury Product Display Cards -->
+        <g transform="translate(360, 10)">
+          <!-- Card 1 -->
+          <rect width="130" height="195" rx="8" fill="url(#cardGrad)" stroke="#374151" stroke-width="1"/>
+          <rect x="15" y="15" width="100" height="110" rx="4" fill="#111827"/>
+          <!-- Abstract fashion coat / luxury silhouette -->
+          <path d="M45,35 L85,35 L95,115 L35,115 Z" fill="#d4af37" opacity="0.4"/>
+          <line x1="65" y1="35" x2="65" y2="115" stroke="#fef08a" stroke-width="1.5"/>
+          <text x="15" y="145" font-family="'Inter', sans-serif" font-size="11" font-weight="700" fill="#f8fafc">The Wool Overcoat</text>
+          <text x="15" y="165" font-family="'Inter', sans-serif" font-size="10" fill="#d4af37" font-weight="600">$480.00</text>
+          
+          <!-- Card 2 -->
+          <g transform="translate(145, 20)">
+            <rect width="130" height="195" rx="8" fill="url(#cardGrad)" stroke="#374151" stroke-width="1"/>
+            <rect x="15" y="15" width="100" height="110" rx="4" fill="#111827"/>
+            <circle cx="65" cy="70" r="35" fill="#38bdf8" opacity="0.3"/>
+            <rect x="50" y="55" width="30" height="30" rx="4" fill="#e2e8f0"/>
+            <text x="15" y="145" font-family="'Inter', sans-serif" font-size="11" font-weight="700" fill="#f8fafc">Chronograph Noir</text>
+            <text x="15" y="165" font-family="'Inter', sans-serif" font-size="10" fill="#38bdf8" font-weight="600">$320.00</text>
+          </g>
+        </g>
+      </g>
+
+      <!-- Bottom Status Bar -->
+      <rect y="360" width="720" height="30" fill="#0f172a"/>
+      <text x="30" y="380" font-family="'Inter', sans-serif" font-size="10" fill="#64748b">Featured in Global Vogue &amp; GQ Architecture &bull; 100% Responsive WordPress &amp; WooCommerce Engine</text>
+    </g>
+  </g>
+</svg>

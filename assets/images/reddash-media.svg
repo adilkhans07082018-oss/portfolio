@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="rdBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#180b0b" />
+      <stop offset="100%" stop-color="#2a0f14" />
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ef4444" />
+      <stop offset="100%" stop-color="#f97316" />
+    </linearGradient>
+    <filter id="shadowRd" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#rdBg)"/>
+
+  <!-- Browser Window Wrapper -->
+  <g transform="translate(40, 30)" filter="url(#shadowRd)">
+    <!-- Header -->
+    <rect width="720" height="40" rx="8" fill="#261b1f"/>
+    <rect y="32" width="720" height="8" fill="#261b1f"/>
+    <circle cx="25" cy="20" r="5.5" fill="#ef4444"/>
+    <circle cx="45" cy="20" r="5.5" fill="#f59e0b"/>
+    <circle cx="65" cy="20" r="5.5" fill="#10b981"/>
+    
+    <rect x="110" y="9" width="380" height="22" rx="5" fill="#171013"/>
+    <text x="130" y="24" font-family="'Inter', sans-serif" font-size="11" fill="#fca5a5">https://reddashmedia.com/campaigns</text>
+
+    <!-- Content -->
+    <g transform="translate(0, 40)">
+      <rect width="720" height="390" fill="#0f090b"/>
+      
+      <!-- Top Brand Bar -->
+      <rect width="720" height="55" fill="#1c0f13"/>
+      <line x1="0" y1="55" x2="720" y2="55" stroke="#381c22" stroke-width="1"/>
+
+      <!-- Logo -->
+      <g transform="translate(40, 16)">
+        <polygon points="12,2 24,22 0,22" fill="url(#redGrad)"/>
+        <text x="32" y="17" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="800" fill="#ffffff">RED DASH <tspan fill="#ef4444">MEDIA</tspan></text>
+      </g>
+
+      <text x="380" y="32" font-family="'Inter', sans-serif" font-size="11" fill="#fed7aa" font-weight="600">CREATIVE LAB</text>
+      <text x="490" y="32" font-family="'Inter', sans-serif" font-size="11" fill="#a8a29e">PORTFOLIO</text>
+      <text x="580" y="32" font-family="'Inter', sans-serif" font-size="11" fill="#a8a29e">SERVICES</text>
+
+      <!-- Main Showcase Grid -->
+      <g transform="translate(40, 75)">
+        <!-- Campaign Card 1 -->
+        <rect width="200" height="270" rx="8" fill="#1c1114" stroke="#3b1f26" stroke-width="1"/>
+        <rect x="15" y="15" width="170" height="130" rx="6" fill="#2d131b"/>
+        <circle cx="100" cy="80" r="35" fill="#ef4444" opacity="0.3"/>
+        <text x="100" y="85" font-family="'Plus Jakarta Sans', sans-serif" font-size="28" font-weight="900" fill="#f87171" text-anchor="middle">GROWTH</text>
+        
+        <text x="15" y="170" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="#ffffff">Social Media Creatives</text>
+        <text x="15" y="190" font-family="'Inter', sans-serif" font-size="11" fill="#a8a29e">Brand identity, flyers, Instagram grids &amp; digital ads design.</text>
+        <rect x="15" y="225" width="90" height="22" rx="4" fill="#ef4444"/>
+        <text x="60" y="240" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">Photoshop &bull; AI</text>
+
+        <!-- Campaign Card 2 -->
+        <g transform="translate(220, 0)">
+          <rect width="200" height="270" rx="8" fill="#1c1114" stroke="#3b1f26" stroke-width="1"/>
+          <rect x="15" y="15" width="170" height="130" rx="6" fill="#2d131b"/>
+          <rect x="35" y="35" width="130" height="90" rx="4" fill="#1a0c10" stroke="#f97316" stroke-dasharray="3 3"/>
+          <text x="100" y="85" font-family="'Inter', sans-serif" font-size="12" font-weight="800" fill="#fdba74" text-anchor="middle">&lt;Landing Page /&gt;</text>
+          
+          <text x="15" y="170" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="#ffffff">Website Development</text>
+          <text x="15" y="190" font-family="'Inter', sans-serif" font-size="11" fill="#a8a29e">High-converting client sales funnels with custom styling.</text>
+          <rect x="15" y="225" width="90" height="22" rx="4" fill="#f97316"/>
+          <text x="60" y="240" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">WordPress &bull; CSS</text>
+        </g>
+
+        <!-- Campaign Card 3 -->
+        <g transform="translate(440, 0)">
+          <rect width="200" height="270" rx="8" fill="#1c1114" stroke="#3b1f26" stroke-width="1"/>
+          <rect x="15" y="15" width="170" height="130" rx="6" fill="#2d131b"/>
+          <circle cx="70" cy="70" r="25" fill="#f59e0b" opacity="0.4"/>
+          <circle cx="120" cy="85" r="30" fill="#ef4444" opacity="0.4"/>
+          <text x="100" y="85" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="800" fill="#ffffff" text-anchor="middle">BRAND ASSETS</text>
+          
+          <text x="15" y="170" font-family="'Inter', sans-serif" font-size="13" font-weight="700" fill="#ffffff">Digital Brand Assets</text>
+          <text x="15" y="190" font-family="'Inter', sans-serif" font-size="11" fill="#a8a29e">Logos, vector illustrations, promotional collateral.</text>
+          <rect x="15" y="225" width="90" height="22" rx="4" fill="#dc2626"/>
+          <text x="60" y="240" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">Illustrator &bull; Corel</text>
+        </g>
+      </g>
+
+      <!-- Bottom Bar -->
+      <rect y="365" width="720" height="25" fill="#12080a"/>
+      <text x="360" y="381" font-family="'Inter', sans-serif" font-size="10" fill="#78716c" text-anchor="middle">Agency Work at Red Dash Media &bull; Web &amp; Graphic Design by Mohd Aadil (2021)</text>
+    </g>
+  </g>
+</svg>

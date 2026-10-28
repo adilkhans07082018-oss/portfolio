@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="wbBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <linearGradient id="tealGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+    <filter id="shadowWb" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#wbBg)"/>
+
+  <!-- Browser Window Wrapper -->
+  <g transform="translate(40, 30)" filter="url(#shadowWb)">
+    <!-- Header -->
+    <rect width="720" height="40" rx="8" fill="#1e293b"/>
+    <rect y="32" width="720" height="8" fill="#1e293b"/>
+    <circle cx="25" cy="20" r="5.5" fill="#ef4444"/>
+    <circle cx="45" cy="20" r="5.5" fill="#f59e0b"/>
+    <circle cx="65" cy="20" r="5.5" fill="#10b981"/>
+    
+    <rect x="110" y="9" width="380" height="22" rx="5" fill="#0f172a"/>
+    <text x="130" y="24" font-family="'Inter', sans-serif" font-size="11" fill="#94a3b8">https://thewashbasinscompany.com</text>
+
+    <!-- Content -->
+    <g transform="translate(0, 40)">
+      <rect width="720" height="390" fill="#f8fafc"/>
+      
+      <!-- Top Brand Bar -->
+      <rect width="720" height="55" fill="#ffffff"/>
+      <line x1="0" y1="55" x2="720" y2="55" stroke="#e2e8f0" stroke-width="1"/>
+
+      <!-- Logo -->
+      <g transform="translate(40, 16)">
+        <rect width="24" height="24" rx="4" fill="#06b6d4"/>
+        <path d="M6,12 Q12,18 18,12" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+        <text x="35" y="17" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="800" fill="#0f172a">THE WASH BASINS <tspan fill="#06b6d4">CO.</tspan></text>
+      </g>
+
+      <!-- Nav links -->
+      <text x="360" y="33" font-family="'Inter', sans-serif" font-size="12" fill="#334155" font-weight="600">Countertop</text>
+      <text x="445" y="33" font-family="'Inter', sans-serif" font-size="12" fill="#64748b">Freestanding</text>
+      <text x="540" y="33" font-family="'Inter', sans-serif" font-size="12" fill="#64748b">Stone Art</text>
+
+      <rect x="625" y="15" width="65" height="26" rx="13" fill="#06b6d4"/>
+      <text x="657" y="32" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">CATALOG</text>
+
+      <!-- Hero Sub-banner -->
+      <g transform="translate(40, 75)">
+        <rect width="640" height="110" rx="12" fill="#0f172a"/>
+        <!-- Abstract gradient shapes inside hero -->
+        <circle cx="560" cy="55" r="90" fill="#06b6d4" opacity="0.2"/>
+        <circle cx="500" cy="70" r="60" fill="#10b981" opacity="0.2"/>
+        
+        <text x="30" y="45" font-family="'Plus Jakarta Sans', sans-serif" font-size="20" font-weight="800" fill="#ffffff">Sculptural Sanitaryware &amp; Luxury Basins</text>
+        <text x="30" y="70" font-family="'Inter', sans-serif" font-size="12" fill="#94a3b8">Engineered for luxury villas, boutique hotels, and modern residential master bathrooms.</text>
+        
+        <rect x="30" y="80" width="105" height="20" rx="4" fill="#06b6d4"/>
+        <text x="82" y="94" font-family="'Inter', sans-serif" font-size="9" font-weight="700" fill="#ffffff" text-anchor="middle">EXPLORE RANGE</text>
+      </g>
+
+      <!-- Product Showcase Cards -->
+      <g transform="translate(40, 205)">
+        <!-- Product 1 -->
+        <rect width="195" height="150" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+        <rect x="15" y="15" width="165" height="70" rx="6" fill="#f1f5f9"/>
+        <!-- Ceramic basin illustration -->
+        <ellipse cx="97" cy="50" rx="55" ry="22" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+        <ellipse cx="97" cy="50" rx="42" ry="14" fill="#e2e8f0"/>
+        <circle cx="97" cy="50" r="5" fill="#64748b"/>
+        <text x="15" y="105" font-family="'Inter', sans-serif" font-size="11" font-weight="700" fill="#0f172a">Italian Carrara Oval</text>
+        <text x="15" y="122" font-family="'Inter', sans-serif" font-size="10" fill="#64748b">Matte White Ceramic</text>
+        <text x="15" y="139" font-family="'Inter', sans-serif" font-size="11" font-weight="700" fill="#0284c7">₹14,500</text>
+        <rect x="145" y="125" width="35" height="18" rx="4" fill="#0f172a"/>
+        <text x="162" y="137" font-family="'Inter', sans-serif" font-size="9" font-weight="600" fill="#fff" text-anchor="middle">VIEW</text>
+
+        <!-- Product 2 -->
+        <g transform="translate(220, 0)">
+          <rect width="195" height="150" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+          <rect x="15" y="15" width="165" height="70" rx="6" fill="#f1f5f9"/>
+          <!-- Black stone basin -->
+          <ellipse cx="97" cy="50" rx="50" ry="24" fill="#1e293b"/>
+          <ellipse cx="97" cy="50" rx="40" ry="16" fill="#334155"/>
+          <circle cx="97" cy="50" r="4.5" fill="#d4af37"/>
+          <text x="15" y="105" font-family="'Inter', sans-serif" font-size="11" font-weight="700" fill="#0f172a">Nordic Slate Matte</text>
+          <text x="15" y="122" font-family="'Inter', sans-serif" font-size="10" fill="#64748b">Granite Composite</text>
+          <text x="15" y="139" font-family="'Inter', sans-serif" font-size="11" font-weight="700" fill="#0284c7">₹18,200</text>
+          <rect x="145" y="125" width="35" height="18" rx="4" fill="#0f172a"/>
+          <text x="162" y="137" font-family="'Inter', sans-serif" font-size="9" font-weight="600" fill="#fff" text-anchor="middle">VIEW</text>
+        </g>
+
+        <!-- Product 3 -->
+        <g transform="translate(440, 0)">
+          <rect width="195" height="150" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+          <rect x="15" y="15" width="165" height="70" rx="6" fill="#f1f5f9"/>
+          <!-- Pedestal Basin -->
+          <ellipse cx="97" cy="40" rx="45" ry="18" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+          <rect x="85" y="42" width="24" height="35" fill="#cbd5e1" rx="2"/>
+          <text x="15" y="105" font-family="'Inter', sans-serif" font-size="11" font-weight="700" fill="#0f172a">Monolith Fluted Base</text>
+          <text x="15" y="122" font-family="'Inter', sans-serif" font-size="10" fill="#64748b">Freestanding Stone</text>
+          <text x="15" y="139" font-family="'Inter', sans-serif" font-size="11" font-weight="700" fill="#0284c7">₹32,000</text>
+          <rect x="145" y="125" width="35" height="18" rx="4" fill="#0f172a"/>
+          <text x="162" y="137" font-family="'Inter', sans-serif" font-size="9" font-weight="600" fill="#fff" text-anchor="middle">VIEW</text>
+        </g>
+      </g>
+
+      <!-- Bottom Bar -->
+      <rect y="365" width="720" height="25" fill="#0f172a"/>
+      <text x="360" y="381" font-family="'Inter', sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Built with WordPress, WooCommerce &amp; Custom Product Filtering Architecture &bull; Designed by Mohd Aadil</text>
+    </g>
+  </g>
+</svg>
