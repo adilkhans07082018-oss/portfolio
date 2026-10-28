@@ -111,7 +111,7 @@
 
       <!-- Bottom Bar -->
       <rect y="365" width="720" height="25" fill="#090d16"/>
-      <text x="360" y="381" font-family="'Inter', sans-serif" font-size="10" fill="#64748b" text-anchor="middle">Led by Mohd Aadil (2022 – Present) &bull; Full Lifecycle Web Development, Digital Strategy &amp; Media Production</text>
+      <text x="360" y="381" font-family="'Inter', sans-serif" font-size="10" fill="#64748b" text-anchor="middle">Led by Mohd Aadil (2022 – Present) &#8226; Full Lifecycle Web Development, Digital Strategy &amp; Media Production</text>
     </g>
   </g>
 </svg>

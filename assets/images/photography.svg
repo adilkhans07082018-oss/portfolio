@@ -53,7 +53,7 @@
           
           <text x="15" y="222" font-family="'Inter', sans-serif" font-size="12" font-weight="700" fill="#ffffff">Cinematic Portraiture</text>
           <text x="15" y="238" font-family="'Inter', sans-serif" font-size="10" fill="#94a3b8">Natural lighting &amp; editorial focus</text>
-          <text x="15" y="258" font-family="'Inter', sans-serif" font-size="9" font-weight="600" fill="#f472b6">50mm f/1.8 &bull; Adobe Lightroom</text>
+          <text x="15" y="258" font-family="'Inter', sans-serif" font-size="9" font-weight="600" fill="#f472b6">50mm f/1.8 &#8226; Adobe Lightroom</text>
         </g>
 
         <!-- Photo 2: Product Photography -->
@@ -67,7 +67,7 @@
           
           <text x="15" y="222" font-family="'Inter', sans-serif" font-size="12" font-weight="700" fill="#ffffff">Commercial Product Studio</text>
           <text x="15" y="238" font-family="'Inter', sans-serif" font-size="10" fill="#94a3b8">E-Commerce &amp; branding imagery</text>
-          <text x="15" y="258" font-family="'Inter', sans-serif" font-size="9" font-weight="600" fill="#38bdf8">Studio Flash &bull; Photoshop Retouching</text>
+          <text x="15" y="258" font-family="'Inter', sans-serif" font-size="9" font-weight="600" fill="#38bdf8">Studio Flash &#8226; Photoshop Retouching</text>
         </g>
 
         <!-- Photo 3: Creative Lighting -->
@@ -88,7 +88,7 @@
 
       <!-- Bottom Bar -->
       <rect y="365" width="720" height="25" fill="#090d16"/>
-      <text x="360" y="381" font-family="'Inter', sans-serif" font-size="10" fill="#64748b" text-anchor="middle">Mohd Aadil &bull; Professional Portrait &amp; Commercial Photography for Corporate &amp; Brand Media</text>
+      <text x="360" y="381" font-family="'Inter', sans-serif" font-size="10" fill="#64748b" text-anchor="middle">Mohd Aadil &#8226; Professional Portrait &amp; Commercial Photography for Corporate &amp; Brand Media</text>
     </g>
   </g>
 </svg>

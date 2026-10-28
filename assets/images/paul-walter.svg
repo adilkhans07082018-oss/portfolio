@@ -91,7 +91,7 @@
 
       <!-- Bottom Status Bar -->
       <rect y="360" width="720" height="30" fill="#0f172a"/>
-      <text x="30" y="380" font-family="'Inter', sans-serif" font-size="10" fill="#64748b">Featured in Global Vogue &amp; GQ Architecture &bull; 100% Responsive WordPress &amp; WooCommerce Engine</text>
+      <text x="30" y="380" font-family="'Inter', sans-serif" font-size="10" fill="#64748b">Featured in Global Vogue &amp; GQ Architecture &#8226; 100% Responsive WordPress &amp; WooCommerce Engine</text>
     </g>
   </g>
 </svg>

@@ -46,7 +46,7 @@
     <!-- Tagline underneath -->
     <text x="200" y="245" font-family="'Inter', sans-serif" 
           font-size="12" font-weight="700" fill="#38bdf8" text-anchor="middle" letter-spacing="3">
-      DEV &bull; DESIGN
+      DEV &#8226; DESIGN
     </text>
   </g>
 
@@ -60,7 +60,7 @@
   <!-- Top Right: Creative Design -->
   <g transform="translate(260, 90)">
     <rect width="90" height="30" rx="15" fill="#1e293b" stroke="#ec4899" stroke-width="1.5" />
-    <text x="45" y="19" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#f472b6" text-anchor="middle">&#10024; UI/UX &bull; Art</text>
+    <text x="45" y="19" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#f472b6" text-anchor="middle">&#10024; UI/UX &#8226; Art</text>
   </g>
 
   <!-- Bottom: Experience Badge -->

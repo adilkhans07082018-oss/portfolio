@@ -111,7 +111,7 @@
 
       <!-- Bottom Bar -->
       <rect y="365" width="720" height="25" fill="#0f172a"/>
-      <text x="360" y="381" font-family="'Inter', sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Built with WordPress, WooCommerce &amp; Custom Product Filtering Architecture &bull; Designed by Mohd Aadil</text>
+      <text x="360" y="381" font-family="'Inter', sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Built with WordPress, WooCommerce &amp; Custom Product Filtering Architecture &#8226; Designed by Mohd Aadil</text>
     </g>
   </g>
 </svg>
