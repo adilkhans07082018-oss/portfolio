@@ -1,4 +1,4 @@
-﻿// Career as a night race. A procedurally modelled open-wheel car runs along a precomputed
+// Career as a night race. A procedurally modelled open-wheel car runs along a precomputed
 // racing line. The scroll is the throttle: it sets where the car is, and the motion that
 // produces drives the suspension (pitch/roll/heave), steering, brake heat, plank sparks,
 // gears and the g-meter.
@@ -12,7 +12,7 @@ import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 // 1 scene unit = 1 m
 const W = 12;                    // track width
 const UP = new THREE.Vector3(0, 1, 0);
-const LIME = 0xd2ff00, GOLD = 0xe8b84a, CREAM = 0xf2f1e9, BG = 0x07080a;
+const LIME = 0x00d2ff, GOLD = 0xe8b84a, CREAM = 0xf2f1e9, BG = 0x07080a;
 
 const PATH = [
   [0, 0, 0], [30, 0, -40], [85, 1, -45], [120, 1.8, -85], [105, 1.5, -135], [55, 0.6, -150],
@@ -103,11 +103,11 @@ function carbonTexture() {
 // paint livery: u runs around the body (0.25 = top, 0.75 = belly), v runs nose -> tail
 function liveryTexture() {
   return tex(canvas(512, 512, (x, w, h) => {
-    x.fillStyle = '#c4ee00'; x.fillRect(0, 0, w, h);
-    x.fillStyle = '#121410'; x.fillRect(0.56 * w, 0, 0.38 * w, h);
+    x.fillStyle = '#00a8ff'; x.fillRect(0, 0, w, h);
+    x.fillStyle = '#0e121a'; x.fillRect(0.56 * w, 0, 0.38 * w, h);
     x.fillStyle = '#f2f1e9'; x.fillRect(0.535 * w, 0, 0.012 * w, h); x.fillRect(0.94 * w, 0, 0.012 * w, h);
     // dark spine stripe along the top
-    x.fillStyle = '#121410'; x.fillRect(0.235 * w, 0, 0.03 * w, h);
+    x.fillStyle = '#0e121a'; x.fillRect(0.235 * w, 0, 0.03 * w, h);
   }));
 }
 
@@ -115,10 +115,10 @@ function tyreSidewall() {
   return tex(canvas(512, 512, (x, S) => {
     const c = S / 2;
     x.fillStyle = '#121212'; x.fillRect(0, 0, S, S);
-    x.strokeStyle = '#d2ff00'; x.lineWidth = 10;
+    x.strokeStyle = '#00d2ff'; x.lineWidth = 10;
     x.beginPath(); x.arc(c, c, c * 0.83, 0, Math.PI * 2); x.stroke();
     x.fillStyle = '#e9e9e2'; x.font = '700 30px "JetBrains Mono", monospace'; x.textAlign = 'center'; x.textBaseline = 'middle';
-    const label = 'AK RACING  Â·  SOFT  Â·  ';
+    const label = 'MA RACING  ·  SOFT  ·  ';
     const str = label + label;
     for (let i = 0; i < str.length; i++) {
       x.save(); x.translate(c, c); x.rotate((i / str.length) * Math.PI * 2); x.translate(0, -c * 0.92); x.fillText(str[i], 0, 0); x.restore();
@@ -132,19 +132,19 @@ function wheelCover() {
     const g = x.createRadialGradient(c, c, 10, c, c, c);
     g.addColorStop(0, '#2b2e30'); g.addColorStop(1, '#0d0e0f');
     x.fillStyle = g; x.fillRect(0, 0, S, S);
-    x.strokeStyle = '#d2ff00'; x.lineWidth = 6; x.beginPath(); x.arc(c, c, c - 8, 0, Math.PI * 2); x.stroke();
+    x.strokeStyle = '#00d2ff'; x.lineWidth = 6; x.beginPath(); x.arc(c, c, c - 8, 0, Math.PI * 2); x.stroke();
     x.fillStyle = '#3a3e42';
     for (let i = 0; i < 5; i++) {
       x.save(); x.translate(c, c); x.rotate((i / 5) * Math.PI * 2); x.fillRect(-6, 22, 12, c - 40); x.restore();
     }
-    x.fillStyle = '#d2ff00'; x.beginPath(); x.arc(c, c, 16, 0, Math.PI * 2); x.fill();
+    x.fillStyle = '#00d2ff'; x.beginPath(); x.arc(c, c, 16, 0, Math.PI * 2); x.fill();
   }));
 }
 
 function helmetTexture() {
   return tex(canvas(512, 256, (x, w, h) => {
-    x.fillStyle = '#c4ee00'; x.fillRect(0, 0, w, h);
-    x.fillStyle = '#121410'; x.fillRect(0, h * 0.62, w, h * 0.38);
+    x.fillStyle = '#00a8ff'; x.fillRect(0, 0, w, h);
+    x.fillStyle = '#0e121a'; x.fillRect(0, h * 0.62, w, h * 0.38);
     x.fillStyle = '#f2f1e9'; x.fillRect(0, h * 0.6, w, h * 0.025);
     // visor on the front (u â‰ˆ 0.25)
     x.fillStyle = '#05060a'; x.fillRect(w * 0.1, h * 0.4, w * 0.3, h * 0.16);
@@ -230,7 +230,7 @@ function buildCar() {
   const paint = new THREE.MeshPhysicalMaterial({ map: liveryTexture(), metalness: 0.1, roughness: 0.38, clearcoat: 1, clearcoatRoughness: 0.06, envMapIntensity: 0.32 });
   const carbon = new THREE.MeshPhysicalMaterial({ map: carbonMap, metalness: 0.3, roughness: 0.42, clearcoat: 0.7, clearcoatRoughness: 0.15, envMapIntensity: 0.3 });
   const satinBlack = new THREE.MeshStandardMaterial({ color: 0x0c0d0e, roughness: 0.6, metalness: 0.2 });
-  const limePaint = new THREE.MeshPhysicalMaterial({ color: 0xc4ee00, metalness: 0.1, roughness: 0.35, clearcoat: 1, clearcoatRoughness: 0.06, envMapIntensity: 0.32 });
+  const limePaint = new THREE.MeshPhysicalMaterial({ color: 0x00a8ff, metalness: 0.15, roughness: 0.35, clearcoat: 1, clearcoatRoughness: 0.06, envMapIntensity: 0.35 });
   const rubber = new THREE.MeshStandardMaterial({ color: 0x141414, roughness: 0.92, metalness: 0, side: THREE.DoubleSide, envMapIntensity: 0.3 });
   const titanium = new THREE.MeshStandardMaterial({ color: 0x8b8f93, metalness: 0.9, roughness: 0.35 });
 
@@ -545,11 +545,11 @@ export function initTrack(container, state) {
   scene.add(roadMesh);
 
   // raised kerbs (sawtooth-ish profile), paved run-off, walls with LED boards, catch fencing
-  const kerbMap = tex(canvas(2, 2, (x) => { x.fillStyle = '#c4ee00'; x.fillRect(0, 0, 2, 1); x.fillStyle = '#ecebe4'; x.fillRect(0, 1, 2, 1); }), { repeat: true, nearest: true });
+  const kerbMap = tex(canvas(2, 2, (x) => { x.fillStyle = '#00a8ff'; x.fillRect(0, 0, 2, 1); x.fillStyle = '#ecebe4'; x.fillRect(0, 1, 2, 1); }), { repeat: true, nearest: true });
   const kerbMat = new THREE.MeshStandardMaterial({ map: kerbMap, color: 0xb8b8b0, roughness: 0.6, envMapIntensity: 0.12, side: THREE.DoubleSide });
   const runoff = asphalt(false);
   const runoffMat = new THREE.MeshStandardMaterial({ ...runoff, color: 0x6d7266, roughness: 1, envMapIntensity: 0.15, side: THREE.DoubleSide });
-  const adItems = [['AKSHAY KUMAR', '#d2ff00'], ['SOFTWARE ENGINEER', '#f2f1e9'], ['ENT-GPT', '#d2ff00'], ['RAG Â· SLMs', '#f2f1e9']];
+  const adItems = [['MOHD AADIL', '#00d2ff'], ['WEB DEVELOPER', '#f2f1e9'], ['WORDPRESS & SHOPIFY', '#00d2ff'], ['CREATIVE DESIGN', '#f2f1e9']];
   const adFont = '900 84px "Big Shoulders Display", Impact, sans-serif', adGap = 90;
   const adMeasure = document.createElement('canvas').getContext('2d');
   adMeasure.font = adFont;

@@ -1,17 +1,19 @@
-﻿/* =========================================================
-   Akshay Kumar â€” Portfolio
+/* =========================================================
+   Mohd Aadil — Portfolio
    ========================================================= */
 :root {
-  --bg: #0e0f0b;
-  --bg-2: #15170f;
-  --olive: #262a1d;
-  --olive-2: #33392a;
-  --lime: #d2ff00;
-  --lime-dim: #a9cc00;
-  --cream: #f2f1e9;
-  --ink: #11120d;
-  --muted: #8e9283;
-  --line: rgba(242, 241, 233, 0.12);
+  --bg: #0a0d14;
+  --bg-2: #0f141f;
+  --olive: #101928;
+  --olive-2: #162238;
+  --lime: #00d2ff;
+  --lime-dim: #009ecd;
+  --blue: #00d2ff;
+  --blue-dim: #009ecd;
+  --cream: #f0f4f8;
+  --ink: #07090e;
+  --muted: #8290a4;
+  --line: rgba(240, 244, 248, 0.12);
   --gold: #e8b84a;
 
   --f-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
@@ -91,7 +93,7 @@ body::after {
 
 .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--lime); margin-right: 8px; vertical-align: 1px; }
 .dot--live { animation: pulse 1.6s ease-in-out infinite; }
-@keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(210, 255, 0, .6); } 50% { box-shadow: 0 0 0 7px rgba(210, 255, 0, 0); } }
+@keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(0, 210, 255, .6); } 50% { box-shadow: 0 0 0 7px rgba(0, 210, 255, 0); } }
 
 /* ---------- buttons ---------- */
 .btn {
@@ -223,7 +225,7 @@ body::after {
 .hero__glow {
   position: absolute; left: 50%; top: 58%; width: 70vmin; height: 70vmin;
   transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(210, 255, 0, 0.22), rgba(210, 255, 0, 0) 65%);
+  background: radial-gradient(circle, rgba(0, 210, 255, 0.22), rgba(0, 210, 255, 0) 65%);
   filter: blur(20px);
 }
 .hero__bgtext {
@@ -387,7 +389,7 @@ body::after {
 .race--lime .race__list li::before { background: var(--ink); }
 .race--lime .chips span { border-color: rgba(17, 18, 13, .25); color: var(--ink); }
 
-.race--next { background: transparent; border: 1px dashed rgba(210, 255, 0, .4); justify-content: center; }
+.race--next { background: transparent; border: 1px dashed rgba(0, 210, 255, .4); justify-content: center; }
 .race--next .race__title { font-size: clamp(48px, 5vw, 80px); }
 .race__lede { color: var(--muted); font-size: 18px; max-width: 22em; }
 .race--next .btn { align-self: flex-start; }
@@ -463,7 +465,7 @@ body::after {
 .hud__rpm { display: block; width: 100%; height: 4px; margin-bottom: 8px; border-radius: 2px; background: rgba(242, 241, 233, .1); overflow: hidden; }
 .hud__rpm span {
   display: block; height: 100%;
-  background: linear-gradient(90deg, #6fd400 0%, var(--lime) 60%, #ffb800 82%, #ff3b2f 100%);
+  background: linear-gradient(90deg, #0055ff 0%, var(--lime) 60%, #00e5ff 82%, #ff3b2f 100%);
   clip-path: inset(0 100% 0 0);
 }
 
