@@ -18,7 +18,7 @@ function makeLabel(text, hot) {
   c.width = w; c.height = 96;
   ctx.font = font;
   ctx.textBaseline = 'middle';
-  ctx.fillStyle = hot ? '#00d2ff' : '#f2f1e9';
+  ctx.fillStyle = hot ? '#ff1e27' : '#f2f1e9';
   ctx.fillText(text.toUpperCase(), 24, 52);
   const tex = new THREE.CanvasTexture(c);
   tex.colorSpace = THREE.SRGBColorSpace;
@@ -41,7 +41,7 @@ export function initGarage(container) {
   const R = 2.7;
   const core = new THREE.LineSegments(
     new THREE.WireframeGeometry(new THREE.IcosahedronGeometry(1.35, 1)),
-    new THREE.LineBasicMaterial({ color: 0x00d2ff, transparent: true, opacity: 0.35 })
+    new THREE.LineBasicMaterial({ color: 0xff1e27, transparent: true, opacity: 0.38 })
   );
   root.add(core);
   const shell = new THREE.LineSegments(
@@ -53,7 +53,7 @@ export function initGarage(container) {
   // orbit ring
   const ring = new THREE.Mesh(
     new THREE.TorusGeometry(R * 1.12, 0.006, 8, 160),
-    new THREE.MeshBasicMaterial({ color: 0x00d2ff, transparent: true, opacity: 0.5 })
+    new THREE.MeshBasicMaterial({ color: 0xff1e27, transparent: true, opacity: 0.55 })
   );
   ring.rotation.x = Math.PI / 2.3;
   scene.add(ring);

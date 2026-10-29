@@ -84,12 +84,12 @@ function ribbonTexture() {
   c.width = W; c.height = Hh;
   const x = c.getContext('2d');
   const band = (a, b, col) => { x.fillStyle = col; x.fillRect(a * W, 0, (b - a) * W, Hh); };
-  band(0, 1, '#0088cc');
+  band(0, 1, '#b30d14');
   band(0, 0.05, '#b8871f'); band(0.95, 1, '#b8871f');
   band(0.05, 0.065, '#f2f1e9'); band(0.935, 0.95, '#f2f1e9');
   band(0.36, 0.64, '#151810');
   band(0.385, 0.395, '#f2f1e9'); band(0.605, 0.615, '#f2f1e9');
-  band(0.47, 0.53, '#00d2ff');
+  band(0.47, 0.53, '#ff1e27');
   // fine lengthwise fibre variation
   for (let i = 0; i < 1400; i++) {
     x.fillStyle = `rgba(${Math.random() < 0.5 ? '255,255,255' : '0,0,0'},${Math.random() * 0.05})`;
@@ -217,7 +217,7 @@ export function initMedal(container) {
   key.shadow.bias = -0.0004;
   key.shadow.normalBias = 0.03;
   scene.add(key, key.target);
-  const rim = new THREE.DirectionalLight(0x00d2ff, 0.6);
+  const rim = new THREE.DirectionalLight(0xff1e27, 0.6);
   rim.position.set(-5, 2, -4);
   scene.add(rim);
 

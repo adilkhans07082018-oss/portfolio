@@ -53,8 +53,8 @@ const frag = /* glsl */ `
     float r = mix(0.1, 0.62, pow(cl, 0.85));
     float d = length(fract(g) - 0.5);
     float dotm = smoothstep(r, r - 0.12, d);
-    vec3 lime = vec3(0.0, 0.824, 1.0);
-    vec3 olive = vec3(0.06, 0.08, 0.14);
+    vec3 lime = vec3(1.0, 0.12, 0.15);
+    vec3 olive = vec3(0.12, 0.05, 0.06);
     vec3 half_ = mix(olive, lime, dotm);
     // scanline + grid telemetry
     float scan = step(0.5, fract(px.y / 3.0)) * 0.08;
