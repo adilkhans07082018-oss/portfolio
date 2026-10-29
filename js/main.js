@@ -1,561 +1,424 @@
-/**
- * MOHD AADIL - PORTFOLIO INTERACTIVITY SCRIPT
- * Web Developer & Graphic Designer
- */
+﻿/* global gsap, ScrollTrigger, Lenis */
+gsap.registerPlugin(ScrollTrigger);
 
-document.addEventListener('DOMContentLoaded', () => {
-  initThemeToggle();
-  initTypewriter();
-  initMobileNav();
-  initCounterStats();
-  initPortfolioFilter();
-  initProjectModal();
-  initResumeModal();
-  initContactForm();
-  initScrollSpy();
-  initBackToTop();
-  initCopyButtons();
-});
+const $ = (s, el = document) => el.querySelector(s);
+const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const trackState = { progress: 0 };
+const finePointer =window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* -------------------------------------------------------------
- * 1. THEME TOGGLE (DARK / LIGHT MODE)
- * ------------------------------------------------------------- */
-function initThemeToggle() {
-  const toggleBtn = document.getElementById('theme-toggle');
-  const toggleIcon = document.getElementById('theme-toggle-icon');
-  
-  // Check persisted preference or default to dark
-  const savedTheme = localStorage.getItem('theme') || 'dark';
-  document.documentElement.setAttribute('data-theme', savedTheme);
-  updateThemeIcon(savedTheme);
-
-  if (toggleBtn) {
-    toggleBtn.addEventListener('click', () => {
-      const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      
-      document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      updateThemeIcon(newTheme);
-      showToast(`Switched to ${newTheme === 'dark' ? 'Dark' : 'Light'} Mode`, 'info');
-    });
-  }
-
-  function updateThemeIcon(theme) {
-    if (!toggleIcon) return;
-    if (theme === 'light') {
-      toggleIcon.className = 'fa-solid fa-moon text-indigo-600 text-lg';
-    } else {
-      toggleIcon.className = 'fa-solid fa-sun text-yellow-400 text-lg';
-    }
-  }
-}
-
-/* -------------------------------------------------------------
- * 2. DYNAMIC TYPEWRITER EFFECT
- * ------------------------------------------------------------- */
-function initTypewriter() {
-  const typewriterEl = document.getElementById('typewriter-text');
-  if (!typewriterEl) return;
-
-  const roles = [
-    'Web Developer',
-    'WordPress & CMS Specialist',
-    'Graphic & UI/UX Designer',
-    'Shopify Store Creator',
-    'Digital Marketer & Photographer',
-    'AI-Enhanced Solution Builder'
-  ];
-
-  let roleIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
-  let typingDelay = 100;
-
-  function type() {
-    const currentRole = roles[roleIndex];
-
-    if (isDeleting) {
-      typewriterEl.textContent = currentRole.substring(0, charIndex - 1);
-      charIndex--;
-      typingDelay = 50;
-    } else {
-      typewriterEl.textContent = currentRole.substring(0, charIndex + 1);
-      charIndex++;
-      typingDelay = 110;
-    }
-
-    if (!isDeleting && charIndex === currentRole.length) {
-      isDeleting = true;
-      typingDelay = 1800; // Pause at end of word
-    } else if (isDeleting && charIndex === 0) {
-      isDeleting = false;
-      roleIndex = (roleIndex + 1) % roles.length;
-      typingDelay = 400; // Pause before typing new word
-    }
-
-    setTimeout(type, typingDelay);
-  }
-
-  type();
-}
-
-/* -------------------------------------------------------------
- * 3. MOBILE NAVIGATION DRAWER
- * ------------------------------------------------------------- */
-function initMobileNav() {
-  const menuToggle = document.getElementById('mobile-menu-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const closeMenu = document.getElementById('mobile-menu-close');
-  const navLinks = document.querySelectorAll('.mobile-nav-link');
-
-  if (!menuToggle || !mobileMenu) return;
-
-  function openDrawer() {
-    mobileMenu.classList.remove('hidden');
-    setTimeout(() => {
-      mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
-    }, 10);
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeDrawer() {
-    mobileMenu.classList.add('opacity-0', 'pointer-events-none');
-    setTimeout(() => {
-      mobileMenu.classList.add('hidden');
-    }, 300);
-    document.body.style.overflow = 'auto';
-  }
-
-  menuToggle.addEventListener('click', openDrawer);
-  if (closeMenu) closeMenu.addEventListener('click', closeDrawer);
-
-  navLinks.forEach(link => {
-    link.addEventListener('click', closeDrawer);
-  });
-}
-
-/* -------------------------------------------------------------
- * 4. ANIMATED STATS COUNTER
- * ------------------------------------------------------------- */
-function initCounterStats() {
-  const counters = document.querySelectorAll('.counter-value');
-  let hasAnimated = false;
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !hasAnimated) {
-        hasAnimated = true;
-        counters.forEach(counter => {
-          const target = +counter.getAttribute('data-target');
-          let count = 0;
-          const speed = target > 50 ? 25 : 40;
-          const increment = Math.ceil(target / (1000 / speed));
-
-          const updateCount = () => {
-            count += increment;
-            if (count < target) {
-              counter.innerText = count;
-              setTimeout(updateCount, speed);
-            } else {
-              counter.innerText = target;
-            }
-          };
-          updateCount();
+/* ---------------------------------------------------------
+   Text splitting
+   --------------------------------------------------------- */
+function splitWords(el) {
+  const out = document.createDocumentFragment();
+  const walk = (node, parent) => {
+    node.childNodes.forEach((n) => {
+      if (n.nodeType === Node.TEXT_NODE) {
+        n.textContent.split(/(\s+)/).forEach((part) => {
+          if (!part) return;
+          if (/^\s+$/.test(part)) { parent.appendChild(document.createTextNode(' ')); return; }
+          const outer = document.createElement('span');
+          outer.className = 'sw';
+          const inner = document.createElement('span');
+          inner.textContent = part;
+          outer.appendChild(inner);
+          parent.appendChild(outer);
         });
+      } else if (n.nodeType === Node.ELEMENT_NODE) {
+        const clone = n.cloneNode(false);
+        parent.appendChild(clone);
+        walk(n, clone);
       }
     });
-  }, { threshold: 0.5 });
-
-  const statsSection = document.getElementById('stats-strip');
-  if (statsSection) {
-    observer.observe(statsSection);
-  }
+  };
+  walk(el, out);
+  el.textContent = '';
+  el.appendChild(out);
+  return $$('.sw > span', el);
 }
 
-/* -------------------------------------------------------------
- * 5. PORTFOLIO FILTER
- * ------------------------------------------------------------- */
-function initPortfolioFilter() {
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.project-card');
-
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      // Toggle active class
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const filterValue = btn.getAttribute('data-filter');
-
-      projectCards.forEach(card => {
-        const category = card.getAttribute('data-category');
-        if (filterValue === 'all' || category.includes(filterValue)) {
-          card.style.display = 'block';
-          setTimeout(() => {
-            card.style.opacity = '1';
-            card.style.transform = 'scale(1)';
-          }, 10);
-        } else {
-          card.style.opacity = '0';
-          card.style.transform = 'scale(0.95)';
-          setTimeout(() => {
-            card.style.display = 'none';
-          }, 250);
-        }
-      });
+// chars are grouped per word so lines only break between words
+function splitChars(el) {
+  const words = el.textContent.trim().split(/\s+/);
+  el.textContent = '';
+  const chars = [];
+  words.forEach((w, i) => {
+    const word = document.createElement('span');
+    word.className = 'chw';
+    [...w].forEach((c) => {
+      const s = document.createElement('span');
+      s.className = 'ch';
+      s.textContent = c;
+      word.appendChild(s);
+      chars.push(s);
     });
+    el.appendChild(word);
+    if (i < words.length - 1) el.appendChild(document.createTextNode(' '));
   });
+  return chars;
 }
 
-/* -------------------------------------------------------------
- * 6. PROJECT DETAILS MODAL
- * ------------------------------------------------------------- */
-const projectDatabase = {
-  'paul-walter': {
-    title: 'Paul Walter Luxury Atelier & Brand Store',
-    category: 'Web Development & E-Commerce',
-    client: 'Paul Walter',
-    year: '2023 - 2024',
-    badge: 'Featured Project',
-    image: 'assets/images/paul-walter.svg',
-    summary: 'A bespoke, high-fashion e-commerce portal and lifestyle brand showcase engineered for timeless presentation, rapid page loads, and seamless checkout journeys.',
-    features: [
-      'Custom WordPress & WooCommerce theme architecture with bespoke typography',
-      'High-resolution imagery optimization with WebP lazy-loading for sub-second speeds',
-      'Dynamic product filtering, size matrix picker, and real-time inventory preview',
-      'Mobile-first responsive architecture designed for luxury international shoppers',
-      'Integrated SSL security, CDN setup, and SEO-optimized metadata structure'
-    ],
-    tech: ['WordPress Core', 'WooCommerce', 'PHP / HTML5', 'Custom CSS', 'SEO Optimization', 'Speed Tuning']
-  },
-  'wash-basins': {
-    title: 'The Wash Basins Company Catalog & E-Commerce',
-    category: 'E-Commerce & Sanitaryware Catalog',
-    client: 'The Wash Basins Company',
-    year: '2023',
-    badge: 'E-Commerce Showcase',
-    image: 'assets/images/wash-basins.svg',
-    summary: 'Architectural sanitaryware showcase and distributor portal created to exhibit luxury countertop, freestanding, and artisan stone basins with interactive specification sheets.',
-    features: [
-      'Engineered structured product catalog with multi-attribute filtering (Stone, Ceramic, Freestanding)',
-      'Wholesale inquiry & instant quotation request system',
-      'High-impact modern visual hierarchy tailored to architects, interior designers & homeowners',
-      'Responsive gallery with 360-degree viewing mockups and specification PDF downloads',
-      'Managed domain, DNS, SSL hosting environment, and cPanel configuration'
-    ],
-    tech: ['WordPress', 'Elementor Pro', 'WooCommerce', 'Custom Post Types', 'cPanel & Hosting', 'SSL Setup']
-  },
-  'indus-connections': {
-    title: 'Indus Connections Digital Ecosystem & Media Suite',
-    category: 'Corporate Web, Digital Marketing & Photography',
-    client: 'Indus Connections',
-    year: '2022 - Present',
-    badge: 'Agency Work (Active)',
-    image: 'assets/images/indus-connections.svg',
-    summary: 'Comprehensive brand management, web platform development, digital marketing campaigns, and commercial photography for high-growth enterprise initiatives.',
-    features: [
-      'Designed and administered company websites with modern layouts and fast caching',
-      'Produced complete graphic design assets including company brochures, logos, and promotional creatives',
-      'Spearheaded digital marketing campaigns with social media management, email blasts, and SEO basics',
-      'Conducted on-site commercial photography for corporate branding, executive portraits, and products',
-      'Maintained 99.9% web uptime and performed hardware/network remote technical troubleshooting'
-    ],
-    tech: ['WordPress', 'Adobe Photoshop', 'Illustrator', 'Lightroom', 'Digital Marketing', 'Network/IT Support']
-  },
-  'reddash-media': {
-    title: 'Red Dash Media Campaign & Creative Assets',
-    category: 'Graphic Design & Digital Advertising',
-    client: 'Red Dash Media Clients',
-    year: '2021',
-    badge: 'Creative Agency',
-    image: 'assets/images/reddash-media.svg',
-    summary: 'Spearheaded digital advertising creatives, social media marketing kits, and client website development support for diverse commercial sectors.',
-    features: [
-      'Developed eye-catching promotional banners, posters, and social media carousels',
-      'Assisted in front-end website layout adjustments, CSS modifications, and CMS updates',
-      'Coordinated brand promotion workflows across Instagram, Facebook, and LinkedIn',
-      'Collaborated directly with creative directors to ensure strict brand compliance'
-    ],
-    tech: ['Photoshop', 'CorelDraw', 'Illustrator', 'Social Media Strategy', 'HTML & CSS Support']
-  },
-  'pizeonfly': {
-    title: 'Pizeonfly Client Web Portals & CMS Deployments',
-    category: 'WordPress Development & Theme Customization',
-    client: 'Pizeonfly Multiple Clients',
-    year: '2018 - 2020',
-    badge: '2 Years Dedicated',
-    image: 'assets/images/pizeonfly.svg',
-    summary: 'Engineered, customized, and maintained over 30+ responsive WordPress websites, email newsletters, and client marketing materials over a 2-year tenure.',
-    features: [
-      'Developed custom themes, child themes, and interactive page templates with WordPress builders',
-      'Designed responsive email newsletters, banner campaigns, and promotional collateral',
-      'Coordinated directly with clients to translate business requirements into digital solutions',
-      'Implemented cross-browser testing and mobile responsiveness standards'
-    ],
-    tech: ['WordPress Builders (Elementor, Divi)', 'HTML5 & CSS3', 'Email Marketing', 'Client Management']
-  },
-  'photography-suite': {
-    title: 'Commercial Product & Portrait Photography Studio',
-    category: 'Portrait & Commercial Photography',
-    client: 'Commercial & Private Clients',
-    year: 'Ongoing Passion',
-    badge: 'Creative Speciality',
-    image: 'assets/images/photography.svg',
-    summary: 'High-end commercial product photography and portraiture crafted for brand campaigns, corporate leadership, e-commerce stores, and editorial publications.',
-    features: [
-      'Studio and outdoor lighting setups tailored to product depth and human emotion',
-      'Advanced post-processing with Adobe Lightroom and Photoshop frequency separation',
-      'Color-accurate grading for digital catalogs and physical high-resolution print brochures',
-      'Seamless integration into web design layouts to maximize visual storytelling'
-    ],
-    tech: ['Prime Lens Optics', 'Adobe Lightroom', 'Photoshop Retouching', 'Lighting & Composition']
-  }
-};
-
-function initProjectModal() {
-  const modal = document.getElementById('project-modal');
-  const modalClose = document.getElementById('project-modal-close');
-  const projectButtons = document.querySelectorAll('.open-project-btn');
-
-  if (!modal) return;
-
-  function openModal(projectId) {
-    const data = projectDatabase[projectId];
-    if (!data) return;
-
-    document.getElementById('modal-title').textContent = data.title;
-    document.getElementById('modal-category').textContent = data.category;
-    document.getElementById('modal-badge').textContent = data.badge;
-    document.getElementById('modal-image').src = data.image;
-    document.getElementById('modal-image').alt = data.title;
-    document.getElementById('modal-summary').textContent = data.summary;
-    document.getElementById('modal-client').textContent = data.client;
-    document.getElementById('modal-year').textContent = data.year;
-
-    // Populate Key Features
-    const featureList = document.getElementById('modal-features');
-    featureList.innerHTML = '';
-    data.features.forEach(feat => {
-      const li = document.createElement('li');
-      li.className = 'flex items-start gap-2.5 text-sm text-slate-300';
-      li.innerHTML = `<i class="fa-solid fa-circle-check text-indigo-400 mt-1 flex-shrink-0"></i> <span>${feat}</span>`;
-      featureList.appendChild(li);
-    });
-
-    // Populate Tech Stack Tags
-    const techContainer = document.getElementById('modal-tech');
-    techContainer.innerHTML = '';
-    data.tech.forEach(t => {
-      const span = document.createElement('span');
-      span.className = 'badge-pill text-xs';
-      span.textContent = t;
-      techContainer.appendChild(span);
-    });
-
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeModal() {
-    modal.classList.remove('active');
-    document.body.style.overflow = 'auto';
-  }
-
-  projectButtons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const projectId = btn.getAttribute('data-project');
-      openModal(projectId);
-    });
-  });
-
-  if (modalClose) modalClose.addEventListener('click', closeModal);
-
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) closeModal();
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('active')) {
-      closeModal();
-    }
+function splitStatement(el) {
+  const words = el.textContent.trim().split(/\s+/);
+  el.textContent = '';
+  return words.map((w, i) => {
+    const s = document.createElement('span');
+    s.className = 'word';
+    s.textContent = w;
+    el.appendChild(s);
+    if (i < words.length - 1) el.appendChild(document.createTextNode(' '));
+    return s;
   });
 }
 
-/* -------------------------------------------------------------
- * 7. RESUME MODAL & PRINT HANDLER
- * ------------------------------------------------------------- */
-function initResumeModal() {
-  const resumeModal = document.getElementById('resume-modal');
-  const openBtns = document.querySelectorAll('.open-resume-btn');
-  const closeBtn = document.getElementById('resume-modal-close');
-  const printBtn = document.getElementById('print-resume-btn');
+/* ---------------------------------------------------------
+   Smooth scroll
+   --------------------------------------------------------- */
+let lenis = null;
+if (!reducedMotion && typeof Lenis !== 'undefined') {
+  lenis = new Lenis({ lerp: 0.085, wheelMultiplier: 1 });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add((t) => lenis.raf(t * 1000));
+  gsap.ticker.lagSmoothing(0);
+  lenis.stop();
+}
+window.scrollTo(0, 0);
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 
-  if (!resumeModal) return;
-
-  function openResume() {
-    resumeModal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeResume() {
-    resumeModal.classList.remove('active');
-    document.body.style.overflow = 'auto';
-  }
-
-  openBtns.forEach(btn => btn.addEventListener('click', openResume));
-  if (closeBtn) closeBtn.addEventListener('click', closeResume);
-
-  resumeModal.addEventListener('click', (e) => {
-    if (e.target === resumeModal) closeResume();
-  });
-
-  if (printBtn) {
-    printBtn.addEventListener('click', () => {
-      window.print();
-    });
-  }
+function scrollToTarget(target) {
+  if (lenis) lenis.scrollTo(target, { duration: 1.6, easing: (t) => 1 - Math.pow(1 - t, 4) });
+  else document.querySelector(target)?.scrollIntoView({ behavior: 'smooth' });
 }
 
-/* -------------------------------------------------------------
- * 8. INTERACTIVE CONTACT FORM WITH DIRECT CONNECT
- * ------------------------------------------------------------- */
-function initContactForm() {
-  const form = document.getElementById('contact-form');
-  if (!form) return;
+/* ---------------------------------------------------------
+   Cursor
+   --------------------------------------------------------- */
+function initCursor() {
+  if (!finePointer) return;
+  const cursor = $('.cursor'), dot = $('.cursor__dot'), ring = $('.cursor__ring'), label = $('.cursor__label');
+  let mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my;
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const name = document.getElementById('sender-name')?.value.trim();
-    const email = document.getElementById('sender-email')?.value.trim();
-    const subject = document.getElementById('sender-subject')?.value.trim() || 'New Portfolio Project Inquiry';
-    const message = document.getElementById('sender-message')?.value.trim();
-
-    if (!name || !email || !message) {
-      showToast('Please fill out all required fields.', 'error');
-      return;
-    }
-
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> Sending...';
-    submitBtn.disabled = true;
-
-    setTimeout(() => {
-      submitBtn.innerHTML = originalText;
-      submitBtn.disabled = false;
-      showToast(`Thank you, ${name}! Your message is prepared.`, 'success');
-
-      // Compose mailto link to Mohd Aadil's official email
-      const mailtoUrl = `mailto:adilkhans07082018@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
-        `Hi Mohd Aadil,\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}\n\nSent from Portfolio Website`
-      )}`;
-
-      window.location.href = mailtoUrl;
-      form.reset();
-    }, 800);
+  window.addEventListener('pointermove', (e) => {
+    mx = e.clientX; my = e.clientY;
+    dot.style.transform = `translate3d(${mx}px, ${my}px, 0)`;
+    cursor.classList.remove('is-hidden');
   });
-}
+  document.documentElement.addEventListener('pointerleave', () => cursor.classList.add('is-hidden'));
 
-/* -------------------------------------------------------------
- * 9. SCROLL SPY FOR ACTIVE NAV LINKS
- * ------------------------------------------------------------- */
-function initScrollSpy() {
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.desktop-nav-link');
-
-  window.addEventListener('scroll', () => {
-    let currentId = '';
-    const scrollPosition = window.pageYOffset + 120;
-
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
-      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-        currentId = section.getAttribute('id');
-      }
-    });
-
-    navLinks.forEach(link => {
-      link.classList.remove('text-indigo-400', 'font-semibold');
-      if (link.getAttribute('href') === `#${currentId}`) {
-        link.classList.add('text-indigo-400', 'font-semibold');
-      }
-    });
+  gsap.ticker.add(() => {
+    rx += (mx - rx) * 0.16;
+    ry += (my - ry) * 0.16;
+    ring.style.transform = `translate3d(${rx}px, ${ry}px, 0)`;
   });
-}
 
-/* -------------------------------------------------------------
- * 10. BACK TO TOP BUTTON
- * ------------------------------------------------------------- */
-function initBackToTop() {
-  const bttBtn = document.getElementById('back-to-top');
-  if (!bttBtn) return;
-
-  window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 400) {
-      bttBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
-      bttBtn.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+  document.addEventListener('pointerover', (e) => {
+    const labelled = e.target.closest('[data-cursor]');
+    const link = e.target.closest('a, button');
+    if (labelled && !(link && labelled.contains(link) && link !== labelled && link.closest('[data-magnetic]'))) {
+      label.textContent = labelled.dataset.cursor;
+      cursor.classList.add('is-label');
+      cursor.classList.remove('is-hover');
+    } else if (link) {
+      cursor.classList.add('is-hover');
+      cursor.classList.remove('is-label');
     } else {
-      bttBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
-      bttBtn.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+      cursor.classList.remove('is-hover', 'is-label');
+    }
+  });
+}
+
+/* ---------------------------------------------------------
+   Magnetic elements
+   --------------------------------------------------------- */
+function initMagnetic() {
+  if (!finePointer) return;
+  $$('[data-magnetic]').forEach((el) => {
+    const xTo = gsap.quickTo(el, 'x', { duration: 0.8, ease: 'elastic.out(1, 0.4)' });
+    const yTo = gsap.quickTo(el, 'y', { duration: 0.8, ease: 'elastic.out(1, 0.4)' });
+    el.addEventListener('pointermove', (e) => {
+      const r = el.getBoundingClientRect();
+      xTo((e.clientX - (r.left + r.width / 2)) * 0.35);
+      yTo((e.clientY - (r.top + r.height / 2)) * 0.45);
+    });
+    el.addEventListener('pointerleave', () => { xTo(0); yTo(0); });
+  });
+}
+
+/* ---------------------------------------------------------
+   Nav, menu, anchors, clock
+   --------------------------------------------------------- */
+function initNav() {
+  const nav = $('.nav'), burger = $('.nav__burger');
+  const setMenu = (open) => {
+    document.body.classList.toggle('menu-open', open);
+    burger.setAttribute('aria-expanded', String(open));
+    $('.menu').setAttribute('aria-hidden', String(!open));
+    if (lenis) open ? lenis.stop() : lenis.start();
+  };
+  burger.addEventListener('click', () => setMenu(!document.body.classList.contains('menu-open')));
+
+  $$('a[href^="#"]').forEach((a) => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href');
+      if (id.length < 2 && id !== '#') return;
+      e.preventDefault();
+      setMenu(false);
+      scrollToTarget(id === '#' ? '#top' : id);
+    });
+  });
+
+  let last = 0;
+  const onScroll = (y) => {
+    if (document.body.classList.contains('menu-open')) return;
+    nav.classList.toggle('is-hidden', y > 300 && y > last);
+    last = y;
+  };
+  if (lenis) lenis.on('scroll', ({ scroll }) => onScroll(scroll));
+  else window.addEventListener('scroll', () => onScroll(scrollY), { passive: true });
+}
+
+function initClock() {
+  const fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+  const els = $$('.js-clock');
+  const tick = () => { const s = `${fmt.format(new Date())} IST`; els.forEach((el) => { el.textContent = s; }); };
+  tick();
+  setInterval(tick, 1000);
+  $$('.js-year').forEach((el) => { el.textContent = new Date().getFullYear(); });
+}
+
+/* ---------------------------------------------------------
+   Marquee (speeds up with scroll velocity)
+   --------------------------------------------------------- */
+function initMarquee() {
+  const tween = gsap.to('.js-marquee', { xPercent: -50, ease: 'none', duration: 30, repeat: -1 });
+  if (!lenis) return;
+  lenis.on('scroll', ({ velocity }) => {
+    gsap.to(tween, { timeScale: 1 + Math.min(Math.abs(velocity) * 0.25, 6), duration: 0.2, overwrite: true });
+    gsap.to(tween, { timeScale: 1, duration: 1.2, delay: 0.2, ease: 'power2.out' });
+  });
+}
+
+/* ---------------------------------------------------------
+   Scroll-driven sections
+   --------------------------------------------------------- */
+function initScroll() {
+  // hero parallax out
+  gsap.to('.hero__portrait-inner', {
+    yPercent: 10, scale: 0.9, ease: 'none',
+    scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true },
+  });
+  gsap.to('.hero__bgtext', {
+    yPercent: -40, opacity: 0.2, ease: 'none',
+    scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true },
+  });
+  gsap.to(['.hero__left', '.hero__right', '.hero__signature'], {
+    y: -80, opacity: 0, ease: 'none',
+    scrollTrigger: { trigger: '.hero', start: '30% top', end: '80% top', scrub: true },
+  });
+
+  // split headings
+  $$('[data-split]').forEach((el) => {
+    if (el.closest('.hero')) return;
+    const words = splitWords(el);
+    gsap.from(words, {
+      yPercent: 110, duration: 1.1, ease: 'expo.out', stagger: 0.06,
+      scrollTrigger: { trigger: el, start: 'top 85%' },
+    });
+  });
+
+  // statement word-by-word light up
+  const st = $('.js-statement');
+  const words = splitStatement(st);
+  gsap.to(words, {
+    opacity: 1, ease: 'none', stagger: 0.1,
+    scrollTrigger: { trigger: st, start: 'top 80%', end: 'bottom 50%', scrub: true },
+  });
+
+  // generic reveals
+  ScrollTrigger.batch('[data-reveal]', {
+    start: 'top 90%',
+    onEnter: (els) => gsap.fromTo(els, { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: 'expo.out', stagger: 0.07, overwrite: true }),
+  });
+  gsap.set('[data-reveal]', { opacity: 0 });
+
+  // counters
+  $$('.js-num').forEach((el) => {
+    const to = Number(el.dataset.to), pad = Number(el.dataset.pad || 0);
+    const obj = { v: 0 };
+    ScrollTrigger.create({
+      trigger: el, start: 'top 88%', once: true,
+      onEnter: () => gsap.to(obj, {
+        v: to, duration: 2, ease: 'power3.out',
+        onUpdate: () => { el.textContent = String(Math.round(obj.v)).padStart(pad, '0'); },
+      }),
+    });
+  });
+
+  // stats panel slides up over the previous section
+  gsap.from('.stats', {
+    borderRadius: '80px 80px 0 0', ease: 'none',
+    scrollTrigger: { trigger: '.stats', start: 'top bottom', end: 'top 30%', scrub: true },
+  });
+
+  // horizontal season
+  const mm = gsap.matchMedia();
+  mm.add('(min-width: 901px)', () => {
+    const track = $('.js-season-track'), intro = $('.season__intro');
+    const bar = $('.js-season-bar'), round = $('.js-season-round');
+    const cards = $$('.race', track);
+    const dist = () => Math.max(0, track.scrollWidth - (innerWidth - intro.offsetWidth) + 24);
+
+    const tween = gsap.to(track, {
+      x: () => -dist(), ease: 'none',
+      scrollTrigger: {
+        trigger: '.season', start: 'top top', end: () => `+=${dist()}`,
+        pin: '.season__pin', scrub: 1, invalidateOnRefresh: true, anticipatePin: 1,
+        onUpdate: (self) => {
+          bar.style.transform = `scaleX(${self.progress})`;
+          const idx = Math.min(cards.length, Math.floor(self.progress * cards.length) + 1);
+          round.textContent = `R${String(idx).padStart(2, '0')}`;
+        },
+      },
+    });
+
+    cards.forEach((card) => {
+      gsap.fromTo($('.race__num', card), { x: 120 }, {
+        x: -60, ease: 'none',
+        scrollTrigger: { trigger: card, containerAnimation: tween, start: 'left right', end: 'right left', scrub: true },
+      });
+      gsap.from(card, {
+        rotate: 4, yPercent: 6, ease: 'none',
+        scrollTrigger: { trigger: card, containerAnimation: tween, start: 'left right', end: 'left 55%', scrub: true },
+      });
+    });
+  });
+
+  // career race track: pin the section and feed scroll progress to the 3D scene
+  if (document.documentElement.classList.contains('has-webgl')) {
+    document.documentElement.classList.add('has-track');
+    ScrollTrigger.create({
+      trigger: '.career', start: 'top top', end: () => `+=${innerHeight * 7}`,
+      pin: '.career__pin', anticipatePin: 1, invalidateOnRefresh: true,
+      onUpdate: (self) => { trackState.progress = self.progress; },
+    });
+  } else {
+    gsap.from('.lap', { y: 50, opacity: 0, duration: 1, ease: 'expo.out', stagger: 0.08, scrollTrigger: { trigger: '.laps', start: 'top 85%' } });
+  }
+
+  // contact big text
+  const lines = $$('.contact__line');
+  lines.forEach((line) => {
+    const chars = splitChars(line);
+    gsap.from(chars, {
+      yPercent: 100, opacity: 0, duration: 1, ease: 'expo.out', stagger: 0.025,
+      scrollTrigger: { trigger: line, start: 'top 90%' },
+    });
+    chars.forEach((c) => c.addEventListener('pointerenter', () => {
+      c.classList.add('is-on');
+      setTimeout(() => c.classList.remove('is-on'), 650);
+    }));
+  });
+
+  // footer signature write-on
+  gsap.fromTo('.footer__sign', { clipPath: 'inset(0 100% 0 0)' }, {
+    clipPath: 'inset(0 0% 0 0)', ease: 'none',
+    scrollTrigger: { trigger: '.footer', start: 'top 95%', end: 'bottom bottom', scrub: true },
+  });
+}
+
+/* ---------------------------------------------------------
+   Hero mouse parallax
+   --------------------------------------------------------- */
+function initHeroParallax() {
+  if (!finePointer) return;
+  const bx = gsap.quickTo('.js-hero-word', 'x', { duration: 1.2, ease: 'power3.out' });
+  const by = gsap.quickTo('.js-hero-word', 'y', { duration: 1.2, ease: 'power3.out' });
+  const gx = gsap.quickTo('.hero__glow', 'x', { duration: 1.6, ease: 'power3.out' });
+  const gy = gsap.quickTo('.hero__glow', 'y', { duration: 1.6, ease: 'power3.out' });
+  window.addEventListener('pointermove', (e) => {
+    const nx = e.clientX / innerWidth - 0.5, ny = e.clientY / innerHeight - 0.5;
+    bx(nx * -40); by(ny * -20);
+    gx(nx * 120); gy(ny * 80);
+  });
+}
+
+/* ---------------------------------------------------------
+   Boot
+   --------------------------------------------------------- */
+async function boot() {
+  initCursor();
+  initNav();
+  initClock();
+
+  const heroWordChars = splitChars($('.js-hero-word'));
+  const heroTitleWords = splitWords($('.hero__title'));
+  gsap.set(heroWordChars, { yPercent: 110 });
+  gsap.set(heroTitleWords, { yPercent: 110 });
+  gsap.set(['.nav', '.hero__right', '.hero__left .eyebrow', '.hero__scroll'], { opacity: 0 });
+
+  // loader counter
+  const countEl = $('.js-count'), barEl = $('.loader__bar span');
+  const counter = { v: 0 };
+  const loaderIn = gsap.timeline()
+    .to('.loader__line > span', { y: 0, duration: 1.1, ease: 'expo.out', stagger: 0.08 })
+    .to(counter, {
+      v: 100, duration: 2.4, ease: 'power2.inOut',
+      onUpdate: () => {
+        countEl.textContent = Math.round(counter.v);
+        barEl.style.transform = `scaleX(${counter.v / 100})`;
+      },
+    }, 0.1);
+
+  // WebGL scenes
+  let hero = null;
+  const fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
+  try {
+    const { initHero } = await import('./hero.js');
+    hero = initHero($('.js-hero-canvas'), 'assets/aadil-cutout.webp', { gsap });
+    document.documentElement.classList.add('has-webgl');
+  } catch (err) {
+    console.warn('WebGL hero unavailable, using image fallback.', err);
+  }
+
+  const timeout = new Promise((r) => setTimeout(r, 5000));
+  await Promise.race([Promise.all([fontsReady, hero ? hero.ready : Promise.resolve()]), timeout]);
+  await loaderIn.then();
+
+  fontsReady.then(async () => {
+    try {
+      const [{ initGarage }, { initMedal }, { initTrack }] = await Promise.all([import('./garage.js'), import('./medal.js'), import('./track.js')]);
+      initGarage($('.js-garage'));
+      initMedal($('.js-medal'));
+      if (document.documentElement.classList.contains('has-track')) initTrack($('.js-track'), trackState);
+    } catch (err) {
+      console.warn('3D sections unavailable.', err);
     }
   });
 
-  bttBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  initMagnetic();
+  initMarquee();
+  initScroll();
+  initHeroParallax();
+
+  // loader out + hero intro
+  const tl = gsap.timeline({
+    onComplete: () => {
+      document.body.classList.remove('is-loading');
+      $('.loader').remove();
+      if (lenis) lenis.start();
+      ScrollTrigger.refresh();
+    },
   });
+  tl.to('.loader__line > span', { yPercent: -105, duration: 0.6, ease: 'power3.in', stagger: 0.05 })
+    .to('.loader__row', { opacity: 0, duration: 0.3 }, '<')
+    .to('.loader', { clipPath: 'inset(0 0 100% 0)', duration: 1.1, ease: 'expo.inOut' }, '-=0.15')
+    .add(() => { if (hero) hero.intro(2.2); else gsap.from('.hero__img', { opacity: 0, y: 60, duration: 1.4, ease: 'expo.out' }); }, '-=0.6')
+    .to(heroWordChars, { yPercent: 0, duration: 1.4, ease: 'expo.out', stagger: 0.05 }, '-=0.5')
+    .to(heroTitleWords, { yPercent: 0, duration: 1.1, ease: 'expo.out', stagger: 0.05 }, '-=1.0')
+    .to(['.nav', '.hero__right', '.hero__left .eyebrow', '.hero__scroll'], { opacity: 1, duration: 0.8, stagger: 0.08 }, '-=1.0')
+    .to('.hero__signature', { clipPath: 'inset(0 0% 0 0)', duration: 1.8, ease: 'power2.inOut' }, '-=0.4');
 }
 
-/* -------------------------------------------------------------
- * 11. QUICK COPY TO CLIPBOARD BUTTONS
- * ------------------------------------------------------------- */
-function initCopyButtons() {
-  const copyEmailBtn = document.getElementById('copy-email-btn');
-  const copyPhoneBtn = document.getElementById('copy-phone-btn');
+boot();
 
-  if (copyEmailBtn) {
-    copyEmailBtn.addEventListener('click', () => {
-      navigator.clipboard.writeText('adilkhans07082018@gmail.com').then(() => {
-        showToast('Email address copied to clipboard!', 'success');
-      });
-    });
-  }
-
-  if (copyPhoneBtn) {
-    copyPhoneBtn.addEventListener('click', () => {
-      navigator.clipboard.writeText('+91 7217627771').then(() => {
-        showToast('Phone number copied to clipboard!', 'success');
-      });
-    });
-  }
-}
-
-/* -------------------------------------------------------------
- * 12. TOAST NOTIFICATION UTILITY
- * ------------------------------------------------------------- */
-function showToast(message, type = 'info') {
-  let toast = document.getElementById('toast-notification');
-  let toastMsg = document.getElementById('toast-message');
-  let toastIcon = document.getElementById('toast-icon');
-
-  if (!toast) return;
-
-  toastMsg.textContent = message;
-
-  if (type === 'success') {
-    toastIcon.className = 'fa-solid fa-circle-check text-emerald-400 text-lg';
-  } else if (type === 'error') {
-    toastIcon.className = 'fa-solid fa-circle-exclamation text-rose-400 text-lg';
-  } else {
-    toastIcon.className = 'fa-solid fa-circle-info text-indigo-400 text-lg';
-  }
-
-  toast.classList.add('show');
-
-  setTimeout(() => {
-    toast.classList.remove('show');
-  }, 3800);
-}

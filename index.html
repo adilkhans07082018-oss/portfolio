@@ -1,1640 +1,436 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mohd Aadil — Website Developer & Graphic Designer</title>
-  
-  <!-- Meta & SEO Tags -->
-  <meta name="description" content="Portfolio of Mohd Aadil, Website Developer and Graphic Designer with 6+ years of experience in WordPress, Shopify, Web Development, UI/UX, and Digital Marketing based in New Delhi.">
-  <meta name="keywords" content="Mohd Aadil, Website Developer, Web Designer, Graphic Designer, WordPress Expert, Shopify Developer, New Delhi Web Designer, UI UX Designer, Frontend Developer">
-  <meta name="author" content="Mohd Aadil">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mohd Aadil — Website Developer &amp; Graphic Designer</title>
+  <meta name="description" content="Mohd Aadil — Website Developer &amp; Graphic Designer with 6+ years experience in WordPress, Shopify, UI/UX, and Digital Marketing based in New Delhi.">
+  <meta name="theme-color" content="#0E0F0B">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23D2FF00'/%3E%3Ctext x='32' y='43' font-family='Arial Black,Arial' font-weight='900' font-size='28' text-anchor='middle' fill='%230E0F0B'%3EMA%3C/text%3E%3C/svg%3E">
 
-  <!-- OpenGraph / Social Meta -->
-  <meta property="og:title" content="Mohd Aadil — Website Developer & Graphic Designer">
-  <meta property="og:description" content="Explore the portfolio, projects, and skills of Mohd Aadil, specializing in high-performance websites, WordPress, Shopify, and creative design.">
-  <meta property="og:type" content="website">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="assets/images/avatar.svg">
-
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 
-  <!-- FontAwesome 6 Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: ['selector', '[data-theme="dark"]'],
-      theme: {
-        extend: {
-          fontFamily: {
-            heading: ['Plus Jakarta Sans', 'sans-serif'],
-            body: ['Inter', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
-          },
-          colors: {
-            brand: {
-              50: '#eef2ff',
-              100: '#e0e7ff',
-              200: '#c7d2fe',
-              500: '#6366f1',
-              600: '#4f46e5',
-              700: '#4338ca',
-            }
-          }
-        }
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
       }
     }
   </script>
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="relative min-h-screen text-slate-100 selection:bg-indigo-500 selection:text-white overflow-x-hidden w-full">
+<body class="is-loading">
 
-  <!-- Ambient Glowing Orbs Background (Strictly contained to prevent horizontal scroll) -->
-  <div class="ambient-orbs-wrapper" aria-hidden="true">
-    <div class="bg-ambient-orb bg-orb-1"></div>
-    <div class="bg-ambient-orb bg-orb-2"></div>
-    <div class="bg-ambient-orb bg-orb-3"></div>
+  <!-- ============ LOADER ============ -->
+  <div class="loader" aria-hidden="true">
+    <div class="loader__row mono">
+      <span>MA / Portfolio</span>
+      <span>Season 26</span>
+    </div>
+    <div class="loader__name">
+      <span class="loader__line"><span>Mohd</span></span>
+      <span class="loader__line"><span>Aadil</span></span>
+    </div>
+    <div class="loader__row loader__row--bottom">
+      <div class="loader__bar"><span></span></div>
+      <div class="loader__count"><span class="js-count">0</span><sup>%</sup></div>
+    </div>
   </div>
 
-  <!-- ===================================================================
-       HEADER / NAVBAR
-       =================================================================== -->
-  <header class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-      
-      <!-- Logo -->
-      <a href="#hero" class="flex items-center gap-3 group">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 p-[2px] shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform">
-          <div class="w-full h-full bg-slate-900 rounded-[10px] flex items-center justify-center font-heading font-black text-white text-base">
-            MA
-          </div>
-        </div>
-        <div>
-          <span class="font-heading font-extrabold text-lg sm:text-xl tracking-tight text-white group-hover:text-indigo-400 transition-colors">
-            Mohd <span class="gradient-text">Aadil</span>
-          </span>
-          <span class="block text-[11px] font-mono text-slate-400 -mt-1">&lt;Web Developer /&gt;</span>
-        </div>
-      </a>
+  <!-- ============ CURSOR ============ -->
+  <div class="cursor" aria-hidden="true">
+    <div class="cursor__ring"><span class="cursor__label"></span></div>
+    <div class="cursor__dot"></div>
+  </div>
 
-      <!-- Desktop Navigation Links -->
-      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-300">
-        <a href="#about" class="desktop-nav-link hover:text-white transition-colors">About</a>
-        <a href="#skills" class="desktop-nav-link hover:text-white transition-colors">Skills</a>
-        <a href="#experience" class="desktop-nav-link hover:text-white transition-colors">Experience</a>
-        <a href="#projects" class="desktop-nav-link hover:text-white transition-colors">Projects</a>
-        <a href="#services" class="desktop-nav-link hover:text-white transition-colors">Services</a>
-        <a href="#contact" class="desktop-nav-link hover:text-white transition-colors">Contact</a>
-      </nav>
-
-      <!-- Action Buttons & Theme Switcher -->
-      <div class="hidden md:flex items-center gap-3">
-        <!-- Theme Toggle -->
-        <button id="theme-toggle" type="button" aria-label="Toggle Theme" class="w-10 h-10 rounded-xl bg-slate-800/80 border border-slate-700 flex items-center justify-center hover:border-indigo-500 transition-colors">
-          <i id="theme-toggle-icon" class="fa-solid fa-sun text-yellow-400 text-lg"></i>
-        </button>
-
-        <!-- View Resume CTA -->
-        <button type="button" class="open-resume-btn px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800/90 hover:bg-slate-700 border border-slate-700 hover:border-slate-500 transition-all text-slate-200 flex items-center gap-2">
-          <i class="fa-solid fa-file-invoice text-indigo-400"></i> View CV
-        </button>
-
-        <!-- Contact CTA -->
-        <a href="#contact" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:opacity-95 text-white shadow-lg shadow-indigo-500/25 transition-all transform hover:-translate-y-0.5">
-          Let's Talk
-        </a>
-      </div>
-
-      <!-- Mobile Menu Trigger Button -->
-      <div class="flex items-center gap-2 md:hidden">
-        <button id="theme-toggle-mobile" type="button" class="w-9 h-9 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-yellow-400" onclick="document.getElementById('theme-toggle').click()">
-          <i class="fa-solid fa-circle-half-stroke"></i>
-        </button>
-        <button id="mobile-menu-toggle" type="button" aria-label="Open Menu" class="w-10 h-10 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-200">
-          <i class="fa-solid fa-bars-staggered text-lg"></i>
-        </button>
-      </div>
-
-    </div>
+  <!-- ============ NAV ============ -->
+  <header class="nav">
+    <a href="#top" class="nav__logo" data-magnetic aria-label="Back to top">MA<sup>26</sup></a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#profile" class="link-roll"><span data-text="Profile">Profile</span></a>
+      <a href="#season" class="link-roll"><span data-text="On Track">On Track</span></a>
+      <a href="#garage" class="link-roll"><span data-text="Garage">Garage</span></a>
+      <a href="#career" class="link-roll"><span data-text="Career">Career</span></a>
+      <a href="#trophies" class="link-roll"><span data-text="Trophies">Trophies</span></a>
+    </nav>
+    <a class="btn btn--lime nav__cta" href="#contact" data-magnetic><span>Let's talk</span></a>
+    <button class="nav__burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
   </header>
 
-  <!-- Mobile Drawer Menu -->
-  <div id="mobile-menu" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-xl hidden opacity-0 pointer-events-none transition-all duration-300 md:hidden flex flex-col justify-between p-6">
-    <div>
-      <div class="flex items-center justify-between pb-6 border-b border-slate-800">
-        <div class="flex items-center gap-3">
-          <div class="w-9 h-9 rounded-lg bg-indigo-600 flex items-center justify-center font-bold text-white">MA</div>
-          <span class="font-heading font-bold text-white">Mohd Aadil</span>
-        </div>
-        <button id="mobile-menu-close" class="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-slate-300">
-          <i class="fa-solid fa-xmark text-lg"></i>
-        </button>
-      </div>
-
-      <nav class="flex flex-col gap-4 mt-8 text-lg font-medium text-slate-300">
-        <a href="#about" class="mobile-nav-link hover:text-indigo-400 py-1">About</a>
-        <a href="#skills" class="mobile-nav-link hover:text-indigo-400 py-1">Skills</a>
-        <a href="#experience" class="mobile-nav-link hover:text-indigo-400 py-1">Experience</a>
-        <a href="#projects" class="mobile-nav-link hover:text-indigo-400 py-1">Projects</a>
-        <a href="#services" class="mobile-nav-link hover:text-indigo-400 py-1">Services</a>
-        <a href="#contact" class="mobile-nav-link hover:text-indigo-400 py-1">Contact</a>
-      </nav>
-    </div>
-
-    <div class="space-y-3 pt-6 border-t border-slate-800">
-      <button class="open-resume-btn w-full py-3 rounded-xl bg-slate-800 text-white font-semibold flex items-center justify-center gap-2">
-        <i class="fa-solid fa-file-invoice text-indigo-400"></i> View Resume
-      </button>
-      <a href="#contact" class="mobile-nav-link block text-center w-full py-3 rounded-xl bg-indigo-600 text-white font-bold">
-        Hire Mohd Aadil
-      </a>
+  <div class="menu" aria-hidden="true">
+    <div class="menu__bg"></div>
+    <nav class="menu__links">
+      <a href="#profile"><span>01</span>Profile</a>
+      <a href="#season"><span>02</span>On Track</a>
+      <a href="#garage"><span>03</span>Garage</a>
+      <a href="#career"><span>04</span>Career</a>
+      <a href="#trophies"><span>05</span>Trophies</a>
+      <a href="#contact"><span>06</span>Contact</a>
+    </nav>
+    <div class="menu__foot mono">
+      <a href="mailto:adilkhans07082018@gmail.com">adilkhans07082018@gmail.com</a>
+      <a href="https://wa.me/917217627771" target="_blank" rel="noopener">WhatsApp: +91 721-762-7771 ↗</a>
     </div>
   </div>
 
-  <main class="relative z-10 pt-24 overflow-x-hidden w-full">
-    <!-- ===================================================================
-         HERO SECTION
-         =================================================================== -->
-    <section id="hero" class="relative pt-12 pb-20 lg:pt-20 lg:pb-28 overflow-hidden">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          
-          <!-- Left Column: Copy & CTAs -->
-          <div class="lg:col-span-7 space-y-6">
-            
-            <!-- Availability Pill -->
-            <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-800/80 border border-slate-700/80 text-xs font-semibold text-slate-300">
-              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-status-dot flex-shrink-0"></span>
-              <span>Available for Web &amp; Design Projects</span>
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="top">
+      <div class="hero__glow"></div>
+      <div class="hero__bgtext" aria-hidden="true">
+        <span class="hero__bgword js-hero-word">Aadil</span>
+      </div>
+
+      <div class="hero__portrait" data-cursor="Reveal">
+        <div class="hero__portrait-inner">
+          <div class="hero__canvas js-hero-canvas"></div>
+          <img class="hero__img" src="assets/aadil-cutout.webp" alt="Portrait of Mohd Aadil" width="1086" height="1448">
+        </div>
+      </div>
+
+      <div class="hero__signature" aria-hidden="true">Mohd Aadil</div>
+
+      <div class="hero__left">
+        <p class="eyebrow mono"><span class="dot"></span> Website Developer &amp; Graphic Designer @ Indus Connections</p>
+        <h1 class="hero__title" data-split>Building websites that <em>convert &amp; scale</em>.</h1>
+      </div>
+
+      <div class="hero__right mono">
+        <p>New Delhi, IN</p>
+        <p class="js-clock">--:--:-- IST</p>
+        <p class="hero__status"><span class="dot dot--live"></span>Available for projects</p>
+      </div>
+
+      <a class="hero__scroll mono" href="#profile">Scroll to explore ↓</a>
+    </section>
+
+    <!-- ============ PROFILE ============ -->
+    <section class="profile section" id="profile">
+      <div class="section__head">
+        <span class="mono tag">01 — Driver Profile</span>
+        <span class="mono tag tag--dim">Lap 01 / 06</span>
+      </div>
+
+      <p class="statement js-statement">
+        I'm Mohd Aadil — a website developer and graphic designer based in New Delhi with 6+ years of specialized experience in full-lifecycle website development, custom WordPress &amp; Shopify CMS architecture, digital marketing, and commercial photography. I engineer high-speed, conversion-focused web systems, design memorable visual identities, and deploy secure hosting infrastructures that keep brands growing.
+      </p>
+
+      <div class="spec">
+        <div class="spec__title">
+          <h2 class="h-display" data-split>Spec Sheet</h2>
+          <a class="btn btn--ghost" href="mailto:adilkhans07082018@gmail.com?subject=Requesting%20Mohd%20Aadil%20CV" data-magnetic><span>Contact For CV ↓</span></a>
+        </div>
+        <dl class="spec__grid">
+          <div class="spec__row" data-reveal><dt class="mono">Name</dt><dd>Mohd Aadil</dd></div>
+          <div class="spec__row" data-reveal><dt class="mono">Role</dt><dd>Website Developer &amp; Graphic Designer</dd></div>
+          <div class="spec__row" data-reveal><dt class="mono">Team</dt><dd>Indus Connections (2022 — Present)</dd></div>
+          <div class="spec__row" data-reveal><dt class="mono">Base</dt><dd>Govindpuri, Kalkaji, New Delhi</dd></div>
+          <div class="spec__row" data-reveal><dt class="mono">Debut</dt><dd>2018 (6+ Years Active)</dd></div>
+          <div class="spec__row" data-reveal><dt class="mono">Engine</dt><dd>WordPress · Shopify · HTML5 · CSS3 · JS</dd></div>
+          <div class="spec__row" data-reveal><dt class="mono">Speciality</dt><dd>CMS Architecture · UI/UX · Photography</dd></div>
+          <div class="spec__row" data-reveal><dt class="mono">Licence</dt><dd>B.A. (Hons.) — SVS University</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ============ STATS ============ -->
+    <section class="stats section" id="stats">
+      <div class="section__head">
+        <span class="mono tag">02 — Career Stats</span>
+        <span class="mono tag tag--dim">Telemetry · Season 18—26</span>
+      </div>
+      <h2 class="h-display stats__title" data-split>Numbers from the cockpit</h2>
+
+      <div class="stats__grid">
+        <article class="stat" data-reveal>
+          <div class="stat__num"><span class="js-num" data-to="6" data-pad="2">00</span><sup>+</sup></div>
+          <p class="stat__label">Years in the game</p>
+          <p class="stat__note mono">Continuous industry practice since 2018</p>
+        </article>
+        <article class="stat" data-reveal>
+          <div class="stat__num"><span class="js-num" data-to="50">0</span><sup>+</sup></div>
+          <p class="stat__label">Websites &amp; Portals</p>
+          <p class="stat__note mono">Delivered across E-Commerce &amp; Corporate</p>
+        </article>
+        <article class="stat" data-reveal>
+          <div class="stat__num"><span class="js-num" data-to="100">0</span><sup>%</sup></div>
+          <p class="stat__label">Client satisfaction</p>
+          <p class="stat__note mono">Direct client coordination &amp; support</p>
+        </article>
+        <article class="stat" data-reveal>
+          <div class="stat__num"><span class="js-num" data-to="3" data-pad="2">00</span></div>
+          <p class="stat__label">Reputed agencies</p>
+          <p class="stat__note mono">Indus Connections · Red Dash · Pizeonfly</p>
+        </article>
+        <article class="stat" data-reveal>
+          <div class="stat__num">~<span class="js-num" data-to="99">0</span><sup>.9%</sup></div>
+          <p class="stat__label">Uptime &amp; Hosting</p>
+          <p class="stat__note mono">Domain, DNS, SSL &amp; cPanel configuration</p>
+        </article>
+        <article class="stat stat--gold" data-reveal>
+          <div class="stat__num"><span class="js-num" data-to="1" data-pad="2">00</span></div>
+          <p class="stat__label">Featured brand work</p>
+          <p class="stat__note mono">Paul Walter &bull; The Wash Basins Company</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ SEASON (EXPERIENCE) ============ -->
+    <section class="season" id="season">
+      <div class="season__pin">
+        <div class="season__intro">
+          <span class="mono tag">03 — On Track</span>
+          <h2 class="h-display season__title">Season<br><em>2026</em></h2>
+          <p class="season__sub">Lead Designer &amp; Developer · Indus Connections · New Delhi · 2022 — Present</p>
+          <div class="season__progress mono"><span class="js-season-round">R01</span><div class="season__bar"><span class="js-season-bar"></span></div><span>R04</span></div>
+        </div>
+
+        <div class="season__track js-season-track">
+          <article class="race" data-cursor="Scroll">
+            <div class="race__num">01</div>
+            <header class="race__head">
+              <span class="mono race__round">Round 01 · Featured Client</span>
+              <h3 class="race__title">Paul Walter Luxury Atelier</h3>
+              <p class="race__circuit mono">Circuit: WordPress Core · WooCommerce · Custom CSS · Speed Tuning</p>
+            </header>
+            <div class="race__data">
+              <div><strong>Sub-1s</strong><span class="mono">Load time</span></div>
+              <div><strong>100%</strong><span class="mono">Responsive</span></div>
+              <div><strong>A+</strong><span class="mono">Performance</span></div>
             </div>
-
-            <!-- Main Heading -->
-            <div class="space-y-2">
-              <p class="text-sm sm:text-base font-mono uppercase tracking-wider text-indigo-400 font-semibold">Hello World, I'm</p>
-              <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight font-heading text-white leading-none">
-                MOHD <span class="gradient-text">AADIL</span>
-              </h1>
-              <div class="text-xl sm:text-3xl font-bold font-heading text-slate-300 flex items-center gap-2 pt-2">
-                <span>Passionate</span>
-                <span id="typewriter-text" class="gradient-cyan-text min-h-[1.4em]"></span>
-                <span class="w-1 h-7 bg-indigo-500 animate-pulse"></span>
-              </div>
+            <ul class="race__list">
+              <li>Bespoke luxury brand atelier and international e-commerce portal with sleek typography and custom theme architecture.</li>
+              <li>High-resolution imagery optimization with WebP lazy-loading for sub-second speeds.</li>
+              <li>Dynamic product filtering, size matrix picker, and real-time inventory preview.</li>
+              <li>Integrated SSL security, Cloudflare CDN setup, and SEO-optimized metadata structure.</li>
+            </ul>
+            <div class="chips">
+              <span>WordPress</span><span>WooCommerce</span><span>PHP</span><span>HTML5</span><span>CSS3</span><span>SEO Tuning</span><span>Speed Optimization</span>
             </div>
+          </article>
 
-            <!-- Bio Lead -->
-            <p class="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed">
-              Motivated &amp; detail-oriented <strong class="text-white">Website Developer &amp; Graphic Designer</strong> with over <strong class="text-indigo-400 font-semibold">6+ years</strong> of hands-on experience building high-performance WordPress &amp; Shopify platforms, crafting captivating brand identities, managing digital campaigns, and deploying rock-solid hosting infrastructures.
-            </p>
-
-            <!-- Quick Key Highlights Pills -->
-            <div class="flex flex-wrap gap-2 pt-2">
-              <span class="badge-pill"><i class="fa-brands fa-wordpress text-indigo-400"></i> WordPress &amp; CMS</span>
-              <span class="badge-pill"><i class="fa-brands fa-shopify text-emerald-400"></i> Shopify Stores</span>
-              <span class="badge-pill"><i class="fa-solid fa-code text-cyan-400"></i> HTML5 &bull; CSS3</span>
-              <span class="badge-pill"><i class="fa-solid fa-pen-nib text-pink-400"></i> UI/UX &bull; Photoshop</span>
-              <span class="badge-pill"><i class="fa-solid fa-server text-purple-400"></i> Hosting &bull; SSL &bull; DNS</span>
-              <span class="badge-pill"><i class="fa-solid fa-camera text-yellow-400"></i> Commercial Photography</span>
+          <article class="race race--lime" data-cursor="Scroll">
+            <div class="race__num">02</div>
+            <header class="race__head">
+              <span class="mono race__round">Round 02 · E-Commerce &amp; Catalog</span>
+              <h3 class="race__title">The Wash Basins Company</h3>
+              <p class="race__circuit mono">Circuit: Elementor Pro · Custom Post Types · cPanel · SSL Setup</p>
+            </header>
+            <div class="race__data">
+              <div><strong>Multi-Attr</strong><span class="mono">Filters</span></div>
+              <div><strong>Instant</strong><span class="mono">Quote system</span></div>
+              <div><strong>100%</strong><span class="mono">SSL Security</span></div>
             </div>
-
-            <!-- Action CTAs -->
-            <div class="pt-4 flex flex-wrap items-center gap-4">
-              <a href="#projects" class="px-7 py-3.5 rounded-xl font-bold text-sm bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:from-indigo-600 hover:to-pink-600 text-white shadow-xl shadow-indigo-500/25 flex items-center gap-2 transform hover:-translate-y-0.5 transition-all">
-                <span>View Portfolio</span>
-                <i class="fa-solid fa-arrow-right text-xs"></i>
-              </a>
-
-              <a href="https://wa.me/917217627771?text=Hi%20Mohd%20Aadil,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 rounded-xl font-semibold text-sm bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-600/20 flex items-center gap-2 transform hover:-translate-y-0.5 transition-all">
-                <i class="fa-brands fa-whatsapp text-lg"></i>
-                <span>WhatsApp Me</span>
-              </a>
-
-              <button type="button" class="open-resume-btn px-6 py-3.5 rounded-xl font-semibold text-sm bg-slate-800/90 hover:bg-slate-700 text-slate-200 border border-slate-700 hover:border-indigo-500 transition-all flex items-center gap-2">
-                <i class="fa-solid fa-file-pdf text-rose-400"></i>
-                <span>Download CV</span>
-              </button>
+            <ul class="race__list">
+              <li>Architectural sanitaryware showcase and distributor portal created to exhibit luxury countertop, freestanding, and artisan stone basins.</li>
+              <li>Structured product catalog with multi-attribute filtering (Stone, Ceramic, Freestanding).</li>
+              <li>Wholesale inquiry &amp; instant quotation request system tailored to architects and interior designers.</li>
+              <li>Managed domain, DNS routing, SSL hosting environment, and cPanel configuration.</li>
+            </ul>
+            <div class="chips">
+              <span>WordPress</span><span>Elementor Pro</span><span>WooCommerce</span><span>Custom Post Types</span><span>cPanel</span><span>DNS / SSL</span>
             </div>
+          </article>
 
-            <!-- Location & Contact Quick Indicator -->
-            <div class="pt-2 flex flex-wrap items-center gap-y-2 gap-x-6 text-xs text-slate-400">
-              <div class="flex items-center gap-2">
-                <i class="fa-solid fa-location-dot text-rose-500"></i>
-                <span>Govindpuri, Kalkaji, New Delhi</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <i class="fa-solid fa-phone text-emerald-400"></i>
-                <a href="tel:+917217627771" class="hover:text-white transition-colors">+91 721-762-7771</a>
-              </div>
-              <div class="flex items-center gap-2">
-                <i class="fa-solid fa-envelope text-indigo-400"></i>
-                <a href="mailto:adilkhans07082018@gmail.com" class="hover:text-white transition-colors">adilkhans07082018@gmail.com</a>
-              </div>
+          <article class="race" data-cursor="Scroll">
+            <div class="race__num">03</div>
+            <header class="race__head">
+              <span class="mono race__round">Round 03 · Enterprise Ecosystem</span>
+              <h3 class="race__title">Indus Connections Suite</h3>
+              <p class="race__circuit mono">Circuit: Corporate Web · Social Ads · Commercial Photography · IT Support</p>
+            </header>
+            <div class="race__data">
+              <div><strong>+145%</strong><span class="mono">Reach</span></div>
+              <div><strong>99.9%</strong><span class="mono">Uptime</span></div>
+              <div><strong>Studio</strong><span class="mono">4K Media</span></div>
             </div>
-
-          </div>
-
-          <!-- Right Column: Stylized Visual Card & Avatar Showcase -->
-          <div class="lg:col-span-5 flex justify-center">
-            <div class="relative w-full max-w-md">
-              
-              <!-- Background Glow Frame -->
-              <div class="absolute -inset-1.5 bg-gradient-to-r from-indigo-500 via-purple-600 to-pink-500 rounded-3xl blur-xl opacity-40 animate-pulse"></div>
-              
-              <!-- Card Container -->
-              <div class="relative glass-panel p-6 sm:p-8 space-y-6">
-                
-                <!-- Card Header -->
-                <div class="flex items-center justify-between pb-4 border-b border-slate-800">
-                  <div class="flex items-center gap-3">
-                    <div class="w-3 h-3 rounded-full bg-rose-500"></div>
-                    <div class="w-3 h-3 rounded-full bg-amber-500"></div>
-                    <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
-                  </div>
-                  <span class="font-mono text-xs text-indigo-400">portfolio-v2.0.jsx</span>
-                </div>
-
-                <!-- Avatar Visual Graphic -->
-                <div class="relative flex justify-center py-2">
-                  <div class="w-48 h-48 sm:w-56 sm:h-56 relative group">
-                    <img src="assets/images/avatar.svg" alt="Mohd Aadil Avatar" class="w-full h-full object-contain filter drop-shadow-2xl group-hover:scale-105 transition-transform duration-300">
-                  </div>
-                </div>
-
-                <!-- Snapshot Info Card -->
-                <div class="bg-slate-900/90 rounded-2xl p-4 border border-slate-800 space-y-3 font-mono text-xs">
-                  <div class="flex justify-between items-center text-slate-400">
-                    <span>Role:</span>
-                    <span class="text-indigo-400 font-semibold">Web &amp; Graphic Designer</span>
-                  </div>
-                  <div class="flex justify-between items-center text-slate-400">
-                    <span>Experience:</span>
-                    <span class="text-emerald-400 font-semibold">6+ Years (Since 2018)</span>
-                  </div>
-                  <div class="flex justify-between items-center text-slate-400">
-                    <span>Primary CMS:</span>
-                    <span class="text-sky-400">WordPress &bull; Shopify</span>
-                  </div>
-                  <div class="flex justify-between items-center text-slate-400">
-                    <span>Location:</span>
-                    <span class="text-slate-300">New Delhi, India</span>
-                  </div>
-                  <div class="flex justify-between items-center text-slate-400">
-                    <span>Status:</span>
-                    <span class="text-emerald-400 flex items-center gap-1.5">
-                      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Available Immediately
-                    </span>
-                  </div>
-                </div>
-
-                <!-- Quick Action Buttons inside Card -->
-                <div class="grid grid-cols-2 gap-3 pt-2">
-                  <button id="copy-email-btn" type="button" class="py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-semibold flex items-center justify-center gap-2 border border-slate-700 transition-colors">
-                    <i class="fa-regular fa-copy text-indigo-400"></i> Copy Email
-                  </button>
-                  <button id="copy-phone-btn" type="button" class="py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-semibold flex items-center justify-center gap-2 border border-slate-700 transition-colors">
-                    <i class="fa-regular fa-copy text-emerald-400"></i> Copy Phone
-                  </button>
-                </div>
-
-              </div>
+            <ul class="race__list">
+              <li>Designed, deployed, and continuously managed high-performing websites using WordPress and custom web builders.</li>
+              <li>Created promotional graphics, corporate brochures, brand logos, and high-impact social media creatives with Photoshop &amp; Illustrator.</li>
+              <li>Handled end-to-end digital marketing campaigns, SEO strategies, and content management.</li>
+              <li>Conducted on-site commercial photography for company branding, executive portraits, and products.</li>
+            </ul>
+            <div class="chips">
+              <span>WordPress</span><span>Photoshop</span><span>Illustrator</span><span>Lightroom</span><span>Digital Marketing</span><span>IT Support</span>
             </div>
-          </div>
+          </article>
 
+          <article class="race race--next">
+            <div class="race__num">04</div>
+            <header class="race__head">
+              <span class="mono race__round">Round 04 · Next on the Grid</span>
+              <h3 class="race__title">Your project<br>could be next.</h3>
+            </header>
+            <p class="race__lede">Looking for an experienced developer and designer who can take an idea from wireframe to a blazing-fast live website? Let's get it on the grid.</p>
+            <a href="#contact" class="btn btn--lime" data-magnetic><span>Start a conversation →</span></a>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ===================================================================
-         STATS COUNTER STRIP
-         =================================================================== -->
-    <section id="stats-strip" class="py-10 border-y border-slate-800/80 bg-slate-900/60 backdrop-blur-md">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          
-          <div class="space-y-1">
-            <div class="text-3xl sm:text-5xl font-black font-heading gradient-text">
-              <span class="counter-value" data-target="6">0</span>+
+    <!-- ============ GARAGE (TECH STACK) ============ -->
+    <section class="garage section" id="garage">
+      <div class="section__head">
+        <span class="mono tag">04 — The Garage</span>
+        <span class="mono tag tag--dim">Drag the sphere</span>
+      </div>
+      <div class="garage__layout">
+        <div class="garage__sphere js-garage" data-cursor="Drag"></div>
+        <div class="garage__info">
+          <h2 class="h-display" data-split>What's under the hood</h2>
+          <p class="garage__lede">The tools and engines I tune every day — from bespoke frontend code and custom CMS themes to high-end graphic design and server infrastructure.</p>
+          <div class="garage__cats">
+            <div class="cat" data-reveal>
+              <h3 class="mono">Web Development &amp; CMS</h3>
+              <p>WordPress (Elementor, Divi, WP Builders, Custom Themes) · Shopify · HTML5 · CSS3 · JavaScript Basics · WooCommerce</p>
             </div>
-            <div class="text-xs sm:text-sm font-semibold uppercase tracking-wider text-slate-400">Years Experience</div>
-            <p class="text-[11px] text-slate-400">Continuous industry practice</p>
-          </div>
-
-          <div class="space-y-1">
-            <div class="text-3xl sm:text-5xl font-black font-heading gradient-cyan-text">
-              <span class="counter-value" data-target="50">0</span>+
+            <div class="cat" data-reveal>
+              <h3 class="mono">Design &amp; Creative Tools</h3>
+              <p>Adobe Photoshop · Adobe Illustrator · CorelDraw · Figma · Adobe Lightroom · Adobe Premiere Pro · Brand Identity &amp; Logos</p>
             </div>
-            <div class="text-xs sm:text-sm font-semibold uppercase tracking-wider text-slate-400">Web &amp; Design Projects</div>
-            <p class="text-[11px] text-slate-400">Delivered across industries</p>
-          </div>
-
-          <div class="space-y-1">
-            <div class="text-3xl sm:text-5xl font-black font-heading text-emerald-400">
-              <span class="counter-value" data-target="100">0</span>%
+            <div class="cat" data-reveal>
+              <h3 class="mono">AI &amp; Smart Tools</h3>
+              <p>Google Antigravity · ChatGPT · Claude · Google Gemini · Google Flow · Figma AI · Automated Creative Pipelines</p>
             </div>
-            <div class="text-xs sm:text-sm font-semibold uppercase tracking-wider text-slate-400">Client Satisfaction</div>
-            <p class="text-[11px] text-slate-400">Committed to results</p>
-          </div>
-
-          <div class="space-y-1">
-            <div class="text-3xl sm:text-5xl font-black font-heading text-pink-400">
-              <span class="counter-value" data-target="3">0</span>+
+            <div class="cat" data-reveal>
+              <h3 class="mono">Infrastructure &amp; Systems</h3>
+              <p>Domain &amp; DNS Routing · SSL Configuration · cPanel · Localhost (XAMPP/LocalWP) · Windows &amp; Linux OS · AnyDesk / TeamViewer</p>
             </div>
-            <div class="text-xs sm:text-sm font-semibold uppercase tracking-wider text-slate-400">Reputed Agencies</div>
-            <p class="text-[11px] text-slate-400">High-volume workflows</p>
+            <div class="cat" data-reveal>
+              <h3 class="mono">Marketing &amp; Photography</h3>
+              <p>Commercial Product &amp; Portrait Photography · SEO Fundamentals · Social Media Campaigns · Email Marketing · Blog Management</p>
+            </div>
           </div>
-
         </div>
       </div>
     </section>
 
-    <!-- ===================================================================
-         ABOUT ME SECTION
-         =================================================================== -->
-    <section id="about" class="py-20 lg:py-28">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <!-- Section Title -->
-        <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <span class="text-xs font-mono font-bold tracking-widest uppercase text-indigo-400">About Mohd Aadil</span>
-          <h2 class="text-3xl sm:text-5xl font-black font-heading text-white tracking-tight">
-            Crafting Digital Solutions at the Intersection of <span class="gradient-text">Code &amp; Creativity</span>
-          </h2>
-          <p class="text-slate-400 text-sm sm:text-base">
-            Get to know my professional journey, creative philosophy, and multidisciplinary capabilities.
-          </p>
+    <!-- ============ CAREER TIMELINE ============ -->
+    <section class="career" id="career">
+      <div class="career__pin">
+        <div class="career__canvas js-track" data-cursor="Scroll"></div>
+
+        <div class="career__head">
+          <div class="section__head">
+            <span class="mono tag">05 — Career</span>
+            <span class="mono tag tag--dim">Scroll to drive</span>
+          </div>
+          <h2 class="h-display career__title" data-split>The road to the grid</h2>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
-          <!-- Narrative Bio Card -->
-          <div class="lg:col-span-7 glass-panel p-8 sm:p-10 space-y-6">
-            <h3 class="text-2xl font-bold font-heading text-white flex items-center gap-3">
-              <i class="fa-solid fa-user-astronaut text-indigo-400"></i>
-              Professional Background
-            </h3>
-
-            <p class="text-slate-300 leading-relaxed">
-              I am a motivated, results-oriented <strong class="text-white">Website &amp; Graphic Designer</strong> based in New Delhi with a deep-seated passion for creating visually stunning, technically robust, and conversion-focused web applications.
-            </p>
-
-            <p class="text-slate-300 leading-relaxed">
-              Over the past 6+ years across agency environments like <strong class="text-indigo-300">Indus Connections</strong>, <strong class="text-indigo-300">Red Dash Media</strong>, and <strong class="text-indigo-300">Pizeonfly</strong>, I have mastered everything from custom WordPress CMS architecture, Shopify storefronts, and front-end coding, to high-conversion graphic design, social media marketing campaigns, and commercial photography.
-            </p>
-
-            <p class="text-slate-300 leading-relaxed">
-              Unlike traditional developers who only write code, or designers who only create mockups, I bridge both worlds: delivering polished visual branding, responsive web engineering, reliable hosting/server deployment (cPanel, SSL, DNS), and digital marketing funnels that drive real business growth.
-            </p>
-
-            <!-- Hobbies & Personal Passions -->
-            <div class="pt-4 border-t border-slate-800 space-y-3">
-              <span class="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold block">Passions &amp; Interests:</span>
-              <div class="flex flex-wrap gap-2">
-                <span class="badge-pill"><i class="fa-solid fa-camera text-rose-400"></i> Portrait Photography</span>
-                <span class="badge-pill"><i class="fa-solid fa-wand-magic-sparkles text-purple-400"></i> AI Tools &amp; Prompting</span>
-                <span class="badge-pill"><i class="fa-solid fa-screwdriver-wrench text-cyan-400"></i> Hardware &amp; Network Labs</span>
-                <span class="badge-pill"><i class="fa-solid fa-palette text-amber-400"></i> Typography &amp; Minimalist Art</span>
-              </div>
-            </div>
-
-            <!-- Download Button -->
-            <div class="pt-2">
-              <button class="open-resume-btn px-6 py-3 rounded-xl bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-300 border border-indigo-500/30 font-semibold text-sm flex items-center gap-2 transition-all">
-                <i class="fa-solid fa-file-lines text-indigo-400"></i> View Complete Detailed Curriculum Vitae
-              </button>
-            </div>
+        <div class="hud mono" aria-hidden="true">
+          <div class="hud__block"><span class="hud__label">Lap</span><span class="hud__val">01/01</span></div>
+          <div class="hud__block"><span class="hud__label">Sector</span><span class="hud__val js-hud-sector">00/05</span></div>
+          <div class="hud__block hud__block--g"><span class="hud__label">G</span><span class="hud__val js-hud-g">0.0</span></div>
+          <div class="hud__block hud__block--speed">
+            <span class="hud__rpm"><span class="js-hud-rpm"></span></span>
+            <span class="hud__speedrow"><span class="hud__gear js-hud-gear">N</span><span class="hud__val hud__speed js-hud-speed">000</span></span>
+            <span class="hud__label">km/h</span>
           </div>
-
-          <!-- Quick Facts & Personal Details Card -->
-          <div class="lg:col-span-5 space-y-6">
-            
-            <div class="glass-panel p-8 space-y-6">
-              <h3 class="text-xl font-bold font-heading text-white flex items-center gap-3">
-                <i class="fa-solid fa-address-card text-emerald-400"></i>
-                Personal Profile
-              </h3>
-
-              <div class="space-y-4 text-sm">
-                
-                <div class="flex items-start justify-between py-2 border-b border-slate-800/80">
-                  <span class="text-slate-400">Full Name</span>
-                  <span class="text-white font-semibold">Mohd Aadil</span>
-                </div>
-
-                <div class="flex items-start justify-between py-2 border-b border-slate-800/80">
-                  <span class="text-slate-400">Father's Name</span>
-                  <span class="text-slate-200">Javed</span>
-                </div>
-
-                <div class="flex items-start justify-between py-2 border-b border-slate-800/80">
-                  <span class="text-slate-400">Date of Birth</span>
-                  <span class="text-slate-200">7th April 1999</span>
-                </div>
-
-                <div class="flex items-start justify-between py-2 border-b border-slate-800/80">
-                  <span class="text-slate-400">Nationality / Status</span>
-                  <span class="text-slate-200">Indian &bull; Single</span>
-                </div>
-
-                <div class="flex items-start justify-between py-2 border-b border-slate-800/80">
-                  <span class="text-slate-400">Languages</span>
-                  <span class="text-indigo-400 font-semibold">English, Hindi, Urdu</span>
-                </div>
-
-                <div class="flex items-start justify-between py-2 border-b border-slate-800/80">
-                  <span class="text-slate-400">Location</span>
-                  <span class="text-slate-200 text-right">Govindpuri, Kalkaji, New Delhi - 110019</span>
-                </div>
-
-                <div class="flex items-start justify-between py-2">
-                  <span class="text-slate-400">Remote Support</span>
-                  <span class="text-emerald-400 font-semibold flex items-center gap-1.5">
-                    <i class="fa-solid fa-headset"></i> AnyDesk &bull; TeamViewer
-                  </span>
-                </div>
-
-              </div>
-            </div>
-
-            <!-- Education Box -->
-            <div class="glass-panel p-8 space-y-4">
-              <h3 class="text-xl font-bold font-heading text-white flex items-center gap-3">
-                <i class="fa-solid fa-graduation-cap text-indigo-400"></i>
-                Education
-              </h3>
-
-              <div class="space-y-4">
-                
-                <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1">
-                  <div class="flex justify-between items-center">
-                    <span class="font-bold text-white text-sm">SVS UNIVERSITY</span>
-                    <span class="text-xs font-mono text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded">2018 – 2021</span>
-                  </div>
-                  <p class="text-xs text-slate-300 font-medium">B.A. (Hons.) in History &amp; Political Science</p>
-                </div>
-
-                <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1">
-                  <div class="flex justify-between items-center">
-                    <span class="font-bold text-white text-sm">K.G.S.B.V CHIRAG ENCLAVE</span>
-                    <span class="text-xs font-mono text-slate-400 bg-slate-800 px-2 py-0.5 rounded">2018</span>
-                  </div>
-                  <p class="text-xs text-slate-300">Senior Secondary (12th) &bull; CBSE Board</p>
-                </div>
-
-                <div class="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-1">
-                  <div class="flex justify-between items-center">
-                    <span class="font-bold text-white text-sm">K.G.S.B.V CHIRAG ENCLAVE</span>
-                    <span class="text-xs font-mono text-slate-400 bg-slate-800 px-2 py-0.5 rounded">2015</span>
-                  </div>
-                  <p class="text-xs text-slate-300">Secondary (10th) &bull; CBSE Board</p>
-                </div>
-
-              </div>
-            </div>
-
-          </div>
-
         </div>
 
+        <ol class="laps">
+          <li class="lap" data-t="0.1">
+            <span class="lap__year">2015</span>
+            <span class="mono lap__tag">Lights out</span>
+            <h3>Secondary &amp; Senior Secondary</h3>
+            <p>K.G.S.B.V Chirag Enclave — 10th (2015) &amp; 12th (2018), CBSE Board.</p>
+          </li>
+          <li class="lap lap--gold" data-t="0.3">
+            <span class="lap__year">2018</span>
+            <span class="mono lap__tag">Grid debut</span>
+            <h3>Website &amp; Graphic Designer — Pizeonfly</h3>
+            <p>Developed and maintained multiple websites with WordPress and custom themes. Designed email newsletters and marketing banners over a 2-year tenure.</p>
+          </li>
+          <li class="lap" data-t="0.5">
+            <span class="lap__year">2018</span>
+            <span class="mono lap__tag">Graduation</span>
+            <h3>B.A. (Hons.) in History &amp; Political Science</h3>
+            <p>SVS University — 2018 — 2021.</p>
+          </li>
+          <li class="lap lap--lime" data-t="0.71">
+            <span class="lap__year">2021</span>
+            <span class="mono lap__tag">Creative agency</span>
+            <h3>Website &amp; Graphic Designer — Red Dash Media</h3>
+            <p>Supported full-lifecycle website development and graphic design projects. Produced social media campaign creatives and digital marketing assets.</p>
+          </li>
+          <li class="lap" data-t="0.85">
+            <span class="lap__year">2022</span>
+            <span class="mono lap__tag">Lead role</span>
+            <h3>Lead Designer &amp; Developer — Indus Connections</h3>
+            <p>Joined in 2022. Designed and managed company web portals, marketing campaigns, corporate branding, and commercial photography.</p>
+          </li>
+          <li class="lap" data-t="0.95">
+            <span class="lap__year">Now</span>
+            <span class="mono lap__tag">Pushing</span>
+            <h3>High-converting E-Commerce &amp; AI-assisted web systems</h3>
+            <p>Designing modern, responsive websites and digital branding with cutting-edge CMS architectures and sub-second load times.</p>
+          </li>
+        </ol>
+
+        <div class="minimap mono" aria-hidden="true">
+          <div class="minimap__bar"><span class="js-track-bar"></span></div>
+          <div class="minimap__marks">
+            <span>2015</span><span>2018</span><span>B.A.</span><span>2021</span><span>2022</span><span>Now</span>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- ===================================================================
-         CORE SKILLS & TECHNOLOGIES
-         =================================================================== -->
-    <section id="skills" class="py-20 lg:py-28 bg-slate-950/40 relative">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <span class="text-xs font-mono font-bold tracking-widest uppercase text-indigo-400">Technical Arsenal</span>
-          <h2 class="text-3xl sm:text-5xl font-black font-heading text-white tracking-tight">
-            Comprehensive <span class="gradient-text">Core Skills</span> &amp; Capabilities
-          </h2>
-          <p class="text-slate-400 text-sm sm:text-base">
-            Mastery of modern CMS platforms, creative design suites, AI workflow automation, and IT infrastructure.
-          </p>
+    <!-- ============ TROPHIES ============ -->
+    <section class="trophies section" id="trophies">
+      <div class="section__head">
+        <span class="mono tag">06 — Trophy Cabinet</span>
+        <span class="mono tag tag--dim">Drag to swing</span>
+      </div>
+      <div class="trophies__layout">
+        <div class="trophies__medal js-medal" data-cursor="Drag"></div>
+        <div class="trophies__info">
+          <span class="mono tag tag--gold">P1 · Gold</span>
+          <h2 class="h-display" data-split>6+ Years Professional Excellence</h2>
+          <p>Recognized for outstanding dedication in full-lifecycle website development, bespoke creative design, and multi-agency project delivery across New Delhi.</p>
+          <ul class="trophies__meta mono">
+            <li><span>Discipline</span>Web Development &amp; Graphic Design</li>
+            <li><span>Tenure</span>2018 — Present (6+ Years)</li>
+            <li><span>Speciality</span>WordPress, Shopify, E-Commerce &amp; Adobe Suite</li>
+            <li><span>Base</span>New Delhi, India</li>
+          </ul>
         </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          
-          <!-- 1. Web Development & CMS -->
-          <div class="glass-panel p-7 space-y-5 interactive-card">
-            <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 text-2xl">
-              <i class="fa-brands fa-wordpress"></i>
-            </div>
-            <div>
-              <h3 class="text-xl font-bold font-heading text-white">Web Development &amp; CMS</h3>
-              <p class="text-xs text-slate-400 mt-1">Building responsive, high-converting platforms</p>
-            </div>
-            <ul class="space-y-2.5 text-sm text-slate-300">
-              <li class="flex items-center gap-2.5">
-                <i class="fa-solid fa-check text-indigo-400 text-xs"></i>
-                <span><strong>WordPress Core</strong> (Custom Themes &amp; Hooks)</span>
-              </li>
-              <li class="flex items-center gap-2.5">
-                <i class="fa-solid fa-check text-indigo-400 text-xs"></i>
-                <span><strong>Page Builders:</strong> Elementor, Divi, WP Builders</span>
-              </li>
-              <li class="flex items-center gap-2.5">
-                <i class="fa-solid fa-check text-indigo-400 text-xs"></i>
-                <span><strong>Shopify:</strong> Storefront Setup &amp; Customization</span>
-              </li>
-              <li class="flex items-center gap-2.5">
-                <i class="fa-solid fa-check text-indigo-400 text-xs"></i>
-                <span><strong>Frontend Code:</strong> HTML5, CSS3, JavaScript Basics</span>
-              </li>
-              <li class="flex items-center gap-2.5">
-                <i class="fa-solid fa-check text-indigo-400 text-xs"></i>
-                <span><strong>WooCommerce:</strong> Product catalogs &amp; checkout</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- 2. Design & Creative Tools -->
-          <div class="glass-panel p-7 space-y-5 interactive-card">
-            <div class="w-12 h-12 rounded-xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400 text-2xl">
-              <i class="fa-solid fa-palette"></i>
-            </div>
-            <div>
-              <h3 class="text-xl font-bold font-heading text-white">Design &amp; Creative Tools</h3>
-              <p class="text-xs text-slate-400 mt-1">Visual branding, graphics &amp; media production</p>
-            </div>
-            <ul class="space-y-2.5 text-sm text-slate-300">
-              <li class="flex items-center gap-2.5">
-                <i class="fa-solid fa-check text-pink-400 text-xs"></i>
-                <span><strong>Adobe Photoshop:</strong> Retouching, manipulation &amp; ads</span>
-              </li>
-              <li class="flex items-center gap-2.5">
-                <i class="fa-solid fa-check text-pink-400 text-xs"></i>
-                <span><strong>Adobe Illustrator &amp; CorelDraw:</strong> Vector art &amp; logos</span>
-              </li>
-              <li class="flex items-center gap-2.5">
-                <i class="fa-solid fa-check text-pink-400 text-xs"></i>
-                <span><strong>Adobe Lightroom:</strong> High-end color grading</span>
-              </li>
-              <li class="flex items-center gap-2.5">
-                <i class="fa-solid fa-check text-pink-400 text-xs"></i>
-                <span><strong>Adobe Premiere Pro:</strong> Video editing &amp; promo reels</span>
-              </li>
-              <li class="flex items-center gap-2.5">
-                <i class="fa-solid fa-check text-pink-400 text-xs"></i>
-                <span><strong>Figma:</strong> UI/UX wireframes &amp; high-fidelity designs</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- 3. AI & Cutting-Edge Tools -->
-          <div class="glass-panel p-7 space-y-5 interactive-card">
-            <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 text-2xl">
-              <i class="fa-solid fa-wand-magic-sparkles"></i>
-            </div>
-            <div>
-              <h3 class="text-xl font-bold font-heading text-white">AI &amp; Smart Workflows</h3>
-              <p class="text-xs text-slate-400 mt-1">Accelerated workflows and AI-driven prototyping</p>
-            </div>
-            <ul class="space-y-2.5 text-sm text-slate-300">
-              <li class="flex items-center gap-2.5">
-                <i class="fa-solid fa-check text-purple-400 text-xs"></i>
-                <span><strong>Google Antigravity &amp; Gemini:</strong> AI agentic design</span>
-              </li>
-              <li class="flex items-center gap-2.5">
-                <i class="fa-solid fa-check text-purple-400 text-xs"></i>
-                <span><strong>ChatGPT &amp; Claude:</strong> Rapid code generation &amp; copy</span>
-              </li>
-              <li class="flex items-center gap-2.5">
-                <i class="fa-solid fa-check text-purple-400 text-xs"></i>
-                <span><strong>Google Flow &amp; Figma AI:</strong> Generative visuals</span>
-              </li>
-              <li class="flex items-center gap-2.5">
-                <i class="fa-solid fa-check text-purple-400 text-xs"></i>
-                <span><strong>AI-Assisted SEO:</strong> Structured data &amp; metadata generation</span>
-              </li>
-              <li class="flex items-center gap-2.5">
-                <i class="fa-solid fa-check text-purple-400 text-xs"></i>
-                <span><strong>Workflow Automation:</strong> Fast content pipeline</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- 4. Technical & Systems Infrastructure -->
-          <div class="glass-panel p-7 space-y-5 interactive-card">
-            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 text-2xl">
-              <i class="fa-solid fa-server"></i>
-            </div>
-            <div>
-              <h3 class="text-xl font-bold font-heading text-white">Technical &amp; IT Systems</h3>
-              <p class="text-xs text-slate-400 mt-1">Server configurations and system troubleshooting</p>
-            </div>
-            <ul class="space-y-2.5 text-sm text-slate-300">
-              <li class="flex items-center gap-2.5">
-                <i class="fa-solid fa-check text-cyan-400 text-xs"></i>
-                <span><strong>Domain &amp; Hosting Setup:</strong> DNS records, nameservers, cPanel</span>
-              </li>
-              <li class="flex items-center gap-2.5">
-                <i class="fa-solid fa-check text-cyan-400 text-xs"></i>
-                <span><strong>SSL Configuration:</strong> Let's Encrypt, Cloudflare &amp; security</span>
-              </li>
-              <li class="flex items-center gap-2.5">
-                <i class="fa-solid fa-check text-cyan-400 text-xs"></i>
-                <span><strong>Localhost Setup:</strong> XAMPP, WAMP, LocalWP environment</span>
-              </li>
-              <li class="flex items-center gap-2.5">
-                <i class="fa-solid fa-check text-cyan-400 text-xs"></i>
-                <span><strong>OS Management:</strong> Windows &amp; Linux distributions</span>
-              </li>
-              <li class="flex items-center gap-2.5">
-                <i class="fa-solid fa-check text-cyan-400 text-xs"></i>
-                <span><strong>Remote Tech Support:</strong> AnyDesk, TeamViewer support</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- 5. Digital Marketing & Growth -->
-          <div class="glass-panel p-7 space-y-5 interactive-card">
-            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-2xl">
-              <i class="fa-solid fa-chart-line"></i>
-            </div>
-            <div>
-              <h3 class="text-xl font-bold font-heading text-white">Digital Marketing &amp; SEO</h3>
-              <p class="text-xs text-slate-400 mt-1">Driving organic visibility and client engagement</p>
-            </div>
-            <ul class="space-y-2.5 text-sm text-slate-300">
-              <li class="flex items-center gap-2.5">
-                <i class="fa-solid fa-check text-emerald-400 text-xs"></i>
-                <span><strong>SEO Fundamentals:</strong> On-page tags, sitemaps, indexing</span>
-              </li>
-              <li class="flex items-center gap-2.5">
-                <i class="fa-solid fa-check text-emerald-400 text-xs"></i>
-                <span><strong>Social Media Management:</strong> Content calendars &amp; ads</span>
-              </li>
-              <li class="flex items-center gap-2.5">
-                <i class="fa-solid fa-check text-emerald-400 text-xs"></i>
-                <span><strong>Email Marketing:</strong> Newsletter templates &amp; mail blasts</span>
-              </li>
-              <li class="flex items-center gap-2.5">
-                <i class="fa-solid fa-check text-emerald-400 text-xs"></i>
-                <span><strong>Blog &amp; Content Management:</strong> Engaging articles &amp; PR</span>
-              </li>
-              <li class="flex items-center gap-2.5">
-                <i class="fa-solid fa-check text-emerald-400 text-xs"></i>
-                <span><strong>Data Mining &amp; Email Extraction:</strong> Lead prospecting</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- 6. Commercial Photography & Media -->
-          <div class="glass-panel p-7 space-y-5 interactive-card">
-            <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 text-2xl">
-              <i class="fa-solid fa-camera-retro"></i>
-            </div>
-            <div>
-              <h3 class="text-xl font-bold font-heading text-white">Commercial Photography</h3>
-              <p class="text-xs text-slate-400 mt-1">Professional imagery for branding &amp; catalogs</p>
-            </div>
-            <ul class="space-y-2.5 text-sm text-slate-300">
-              <li class="flex items-center gap-2.5">
-                <i class="fa-solid fa-check text-amber-400 text-xs"></i>
-                <span><strong>Portrait Photography:</strong> Executive &amp; corporate branding</span>
-              </li>
-              <li class="flex items-center gap-2.5">
-                <i class="fa-solid fa-check text-amber-400 text-xs"></i>
-                <span><strong>Product Photography:</strong> E-commerce &amp; packaging shoots</span>
-              </li>
-              <li class="flex items-center gap-2.5">
-                <i class="fa-solid fa-check text-amber-400 text-xs"></i>
-                <span><strong>Brochure &amp; Flyer Design:</strong> Print-ready collateral</span>
-              </li>
-              <li class="flex items-center gap-2.5">
-                <i class="fa-solid fa-check text-amber-400 text-xs"></i>
-                <span><strong>PDF Editing &amp; Publishing:</strong> Interactive documents</span>
-              </li>
-              <li class="flex items-center gap-2.5">
-                <i class="fa-solid fa-check text-amber-400 text-xs"></i>
-                <span><strong>End-to-End Asset Creation:</strong> From lens to website live</span>
-              </li>
-            </ul>
-          </div>
-
-        </div>
-
       </div>
     </section>
 
-    <!-- ===================================================================
-         WORK EXPERIENCE (TIMELINE)
-         =================================================================== -->
-    <section id="experience" class="py-20 lg:py-28">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <span class="text-xs font-mono font-bold tracking-widest uppercase text-indigo-400">Career Trajectory</span>
-          <h2 class="text-3xl sm:text-5xl font-black font-heading text-white tracking-tight">
-            Professional <span class="gradient-text">Work Experience</span>
-          </h2>
-          <p class="text-slate-400 text-sm sm:text-base">
-            Detailed chronological record of agency roles, responsibilities, and key achievements.
-          </p>
-        </div>
-
-        <div class="max-w-4xl mx-auto space-y-8">
-          
-          <!-- Experience Item 1: Indus Connections -->
-          <div class="timeline-item">
-            <div class="glass-panel p-6 sm:p-8 space-y-4 interactive-card">
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-4">
-                <div>
-                  <div class="flex items-center gap-3">
-                    <h3 class="text-xl sm:text-2xl font-bold font-heading text-white">Indus Connections</h3>
-                    <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-indigo-500/20 text-indigo-400 border border-indigo-500/30">Current Role</span>
-                  </div>
-                  <p class="text-sm font-semibold text-indigo-300">Website Designer, Graphic Designer, Digital Marketer &amp; Photographer</p>
-                </div>
-                <div class="text-xs font-mono text-slate-300 bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-800 w-fit">
-                  2022 – PRESENT
-                </div>
-              </div>
-
-              <p class="text-sm text-slate-300">
-                Leading the digital presence, web development, multimedia branding, and digital marketing strategies for enterprise operations.
-              </p>
-
-              <ul class="space-y-2 text-sm text-slate-300">
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-arrow-right text-indigo-400 mt-1 text-xs"></i>
-                  <span>Designed, deployed, and continuously managed high-performing client and internal websites utilizing <strong>WordPress</strong> and custom web builders.</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-arrow-right text-indigo-400 mt-1 text-xs"></i>
-                  <span>Created promotional graphics, brand logos, corporate brochures, catalogs, and high-impact social media creatives with Photoshop &amp; Illustrator.</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-arrow-right text-indigo-400 mt-1 text-xs"></i>
-                  <span>Handled complete digital marketing campaigns, content management pipelines, search engine visibility (SEO), and email campaigns.</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-arrow-right text-indigo-400 mt-1 text-xs"></i>
-                  <span>Conducted professional product and portrait photography sessions for company branding, catalog publishing, and digital media.</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-arrow-right text-indigo-400 mt-1 text-xs"></i>
-                  <span>Provided domain &amp; DNS hosting setup, SSL installations, and technical hardware/network troubleshooting via AnyDesk/TeamViewer.</span>
-                </li>
-              </ul>
-
-              <div class="flex flex-wrap gap-2 pt-2">
-                <span class="badge-pill text-xs">WordPress</span>
-                <span class="badge-pill text-xs">Photoshop</span>
-                <span class="badge-pill text-xs">Illustrator</span>
-                <span class="badge-pill text-xs">Commercial Photography</span>
-                <span class="badge-pill text-xs">Digital Marketing</span>
-                <span class="badge-pill text-xs">Hosting &amp; SSL</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Experience Item 2: Red Dash Media -->
-          <div class="timeline-item">
-            <div class="glass-panel p-6 sm:p-8 space-y-4 interactive-card">
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-4">
-                <div>
-                  <h3 class="text-xl sm:text-2xl font-bold font-heading text-white">Red Dash Media</h3>
-                  <p class="text-sm font-semibold text-rose-300">Website &amp; Graphic Designer</p>
-                </div>
-                <div class="text-xs font-mono text-slate-300 bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-800 w-fit">
-                  2021 (6 MONTHS)
-                </div>
-              </div>
-
-              <p class="text-sm text-slate-300">
-                Accelerated digital marketing and web assets for high-growth creative agency clients.
-              </p>
-
-              <ul class="space-y-2 text-sm text-slate-300">
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-arrow-right text-rose-400 mt-1 text-xs"></i>
-                  <span>Supported full-lifecycle website development and responsive graphic design projects for diverse client portfolios.</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-arrow-right text-rose-400 mt-1 text-xs"></i>
-                  <span>Assisted in rapid social media content creation, digital advertising banner layouts, and multi-channel brand promotion.</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-arrow-right text-rose-400 mt-1 text-xs"></i>
-                  <span>Ensured brand consistency across all marketing deliverables under tight turnaround times.</span>
-                </li>
-              </ul>
-
-              <div class="flex flex-wrap gap-2 pt-2">
-                <span class="badge-pill text-xs">Graphic Design</span>
-                <span class="badge-pill text-xs">Web Development Support</span>
-                <span class="badge-pill text-xs">Social Creatives</span>
-                <span class="badge-pill text-xs">Ad Campaigns</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Experience Item 3: Pizeonfly -->
-          <div class="timeline-item">
-            <div class="glass-panel p-6 sm:p-8 space-y-4 interactive-card">
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-4">
-                <div>
-                  <h3 class="text-xl sm:text-2xl font-bold font-heading text-white">Pizeonfly</h3>
-                  <p class="text-sm font-semibold text-emerald-300">Website &amp; Graphic Designer</p>
-                </div>
-                <div class="text-xs font-mono text-slate-300 bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-800 w-fit">
-                  2018 – 2020 (2 YEARS)
-                </div>
-              </div>
-
-              <p class="text-sm text-slate-300">
-                Spearheaded core website engineering, WordPress custom themes, and marketing design production over a 2-year tenure.
-              </p>
-
-              <ul class="space-y-2 text-sm text-slate-300">
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-arrow-right text-emerald-400 mt-1 text-xs"></i>
-                  <span>Developed, customized, and maintained multiple commercial websites utilizing <strong>WordPress</strong> and custom themes.</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-arrow-right text-emerald-400 mt-1 text-xs"></i>
-                  <span>Designed high-conversion marketing materials including email newsletters, promotional banners, and branding stationery.</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-arrow-right text-emerald-400 mt-1 text-xs"></i>
-                  <span>Coordinated directly with clients to translate business requirements into aesthetic, functional digital experiences.</span>
-                </li>
-                <li class="flex items-start gap-2">
-                  <i class="fa-solid fa-arrow-right text-emerald-400 mt-1 text-xs"></i>
-                  <span>Conducted cross-device responsive testing and ensured seamless desktop-to-mobile user journeys.</span>
-                </li>
-              </ul>
-
-              <div class="flex flex-wrap gap-2 pt-2">
-                <span class="badge-pill text-xs">WordPress Core</span>
-                <span class="badge-pill text-xs">Theme Customization</span>
-                <span class="badge-pill text-xs">HTML5 / CSS3</span>
-                <span class="badge-pill text-xs">Email Newsletters</span>
-                <span class="badge-pill text-xs">Client Coordination</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ===================================================================
-         FEATURED PORTFOLIO & PROJECTS
-         =================================================================== -->
-    <section id="projects" class="py-20 lg:py-28 bg-slate-950/40 relative">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
-          <span class="text-xs font-mono font-bold tracking-widest uppercase text-indigo-400">Featured Work</span>
-          <h2 class="text-3xl sm:text-5xl font-black font-heading text-white tracking-tight">
-            Portfolio <span class="gradient-text">Showcase</span>
-          </h2>
-          <p class="text-slate-400 text-sm sm:text-base">
-            Explore live and featured projects, commercial e-commerce platforms, brand assets, and creative design suites.
-          </p>
-
-          <!-- Filter Tabs -->
-          <div class="flex flex-wrap items-center justify-center gap-2 pt-6">
-            <button type="button" class="filter-btn active" data-filter="all">All Projects</button>
-            <button type="button" class="filter-btn" data-filter="web">Web Development</button>
-            <button type="button" class="filter-btn" data-filter="ecommerce">E-Commerce</button>
-            <button type="button" class="filter-btn" data-filter="design">Graphic Design</button>
-            <button type="button" class="filter-btn" data-filter="photo">Photography</button>
-          </div>
-        </div>
-
-        <!-- Project Cards Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          
-          <!-- Project 1: Paul Walter -->
-          <div class="project-card interactive-card glass-panel overflow-hidden flex flex-col justify-between" data-category="web ecommerce">
-            <div>
-              <div class="relative overflow-hidden group bg-slate-900 border-b border-slate-800 h-52">
-                <img src="assets/images/paul-walter.svg" alt="Paul Walter Luxury Atelier" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                <div class="absolute top-3 left-3">
-                  <span class="px-2.5 py-1 rounded-md text-[11px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30 backdrop-blur-md">
-                    Featured E-Commerce
-                  </span>
-                </div>
-              </div>
-              <div class="p-6 space-y-3">
-                <div class="text-xs font-mono text-indigo-400 font-semibold">Luxury Apparel &bull; WordPress &bull; WooCommerce</div>
-                <h3 class="text-xl font-bold font-heading text-white">Paul Walter</h3>
-                <p class="text-sm text-slate-300 line-clamp-2">
-                  Bespoke luxury brand atelier and international e-commerce portal with sleek typography, custom theme architecture, and optimized checkout flow.
-                </p>
-                <div class="flex flex-wrap gap-1.5 pt-1">
-                  <span class="badge-pill text-[11px]">WordPress</span>
-                  <span class="badge-pill text-[11px]">WooCommerce</span>
-                  <span class="badge-pill text-[11px]">Speed Tuning</span>
-                </div>
-              </div>
-            </div>
-            <div class="p-6 pt-0">
-              <button type="button" class="open-project-btn w-full py-2.5 rounded-xl bg-slate-800 hover:bg-indigo-600 text-slate-200 hover:text-white text-xs font-bold transition-colors flex items-center justify-center gap-2" data-project="paul-walter">
-                <span>View Project Case Study</span>
-                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-              </button>
-            </div>
-          </div>
-
-          <!-- Project 2: The Wash Basins Company -->
-          <div class="project-card interactive-card glass-panel overflow-hidden flex flex-col justify-between" data-category="web ecommerce">
-            <div>
-              <div class="relative overflow-hidden group bg-slate-900 border-b border-slate-800 h-52">
-                <img src="assets/images/wash-basins.svg" alt="The Wash Basins Company" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                <div class="absolute top-3 left-3">
-                  <span class="px-2.5 py-1 rounded-md text-[11px] font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 backdrop-blur-md">
-                    Sanitaryware Store
-                  </span>
-                </div>
-              </div>
-              <div class="p-6 space-y-3">
-                <div class="text-xs font-mono text-cyan-400 font-semibold">Architectural Catalog &bull; Product Filtering &bull; SSL</div>
-                <h3 class="text-xl font-bold font-heading text-white">The Wash Basins Company</h3>
-                <p class="text-sm text-slate-300 line-clamp-2">
-                  High-end sanitaryware catalog and distributor platform featuring multi-attribute stone &amp; ceramic filter systems, quote requests, and fast hosting.
-                </p>
-                <div class="flex flex-wrap gap-1.5 pt-1">
-                  <span class="badge-pill text-[11px]">Elementor Pro</span>
-                  <span class="badge-pill text-[11px]">Catalog Architecture</span>
-                  <span class="badge-pill text-[11px]">cPanel / Hosting</span>
-                </div>
-              </div>
-            </div>
-            <div class="p-6 pt-0">
-              <button type="button" class="open-project-btn w-full py-2.5 rounded-xl bg-slate-800 hover:bg-cyan-600 text-slate-200 hover:text-white text-xs font-bold transition-colors flex items-center justify-center gap-2" data-project="wash-basins">
-                <span>View Project Case Study</span>
-                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-              </button>
-            </div>
-          </div>
-
-          <!-- Project 3: Indus Connections -->
-          <div class="project-card interactive-card glass-panel overflow-hidden flex flex-col justify-between" data-category="web design photo">
-            <div>
-              <div class="relative overflow-hidden group bg-slate-900 border-b border-slate-800 h-52">
-                <img src="assets/images/indus-connections.svg" alt="Indus Connections Platform" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                <div class="absolute top-3 left-3">
-                  <span class="px-2.5 py-1 rounded-md text-[11px] font-bold bg-purple-500/20 text-purple-300 border border-purple-500/30 backdrop-blur-md">
-                    Enterprise Web &amp; Media
-                  </span>
-                </div>
-              </div>
-              <div class="p-6 space-y-3">
-                <div class="text-xs font-mono text-purple-400 font-semibold">Corporate Portal &bull; Digital Marketing &bull; Branding</div>
-                <h3 class="text-xl font-bold font-heading text-white">Indus Connections Suite</h3>
-                <p class="text-sm text-slate-300 line-clamp-2">
-                  Complete digital brand ecosystem combining WordPress website management, corporate brochure publishing, social marketing campaigns, and photography.
-                </p>
-                <div class="flex flex-wrap gap-1.5 pt-1">
-                  <span class="badge-pill text-[11px]">WordPress</span>
-                  <span class="badge-pill text-[11px]">Photoshop &bull; AI</span>
-                  <span class="badge-pill text-[11px]">Photography</span>
-                </div>
-              </div>
-            </div>
-            <div class="p-6 pt-0">
-              <button type="button" class="open-project-btn w-full py-2.5 rounded-xl bg-slate-800 hover:bg-purple-600 text-slate-200 hover:text-white text-xs font-bold transition-colors flex items-center justify-center gap-2" data-project="indus-connections">
-                <span>View Project Case Study</span>
-                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-              </button>
-            </div>
-          </div>
-
-          <!-- Project 4: Red Dash Media Campaign Creatives -->
-          <div class="project-card interactive-card glass-panel overflow-hidden flex flex-col justify-between" data-category="design web">
-            <div>
-              <div class="relative overflow-hidden group bg-slate-900 border-b border-slate-800 h-52">
-                <img src="assets/images/reddash-media.svg" alt="Red Dash Media Creatives" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                <div class="absolute top-3 left-3">
-                  <span class="px-2.5 py-1 rounded-md text-[11px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/30 backdrop-blur-md">
-                    Creative Advertising
-                  </span>
-                </div>
-              </div>
-              <div class="p-6 space-y-3">
-                <div class="text-xs font-mono text-rose-400 font-semibold">Social Banners &bull; Identity Kits &bull; Web Support</div>
-                <h3 class="text-xl font-bold font-heading text-white">Red Dash Media Campaigns</h3>
-                <p class="text-sm text-slate-300 line-clamp-2">
-                  High-converting promotional graphics, marketing collateral, vector artwork, and web styling adjustments for diverse consumer brands.
-                </p>
-                <div class="flex flex-wrap gap-1.5 pt-1">
-                  <span class="badge-pill text-[11px]">Photoshop</span>
-                  <span class="badge-pill text-[11px]">CorelDraw</span>
-                  <span class="badge-pill text-[11px]">Illustrator</span>
-                </div>
-              </div>
-            </div>
-            <div class="p-6 pt-0">
-              <button type="button" class="open-project-btn w-full py-2.5 rounded-xl bg-slate-800 hover:bg-rose-600 text-slate-200 hover:text-white text-xs font-bold transition-colors flex items-center justify-center gap-2" data-project="reddash-media">
-                <span>View Project Case Study</span>
-                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-              </button>
-            </div>
-          </div>
-
-          <!-- Project 5: Pizeonfly CMS & Themes -->
-          <div class="project-card interactive-card glass-panel overflow-hidden flex flex-col justify-between" data-category="web">
-            <div>
-              <div class="relative overflow-hidden group bg-slate-900 border-b border-slate-800 h-52">
-                <img src="assets/images/pizeonfly.svg" alt="Pizeonfly Theme Deployments" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                <div class="absolute top-3 left-3">
-                  <span class="px-2.5 py-1 rounded-md text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 backdrop-blur-md">
-                    30+ CMS Portals
-                  </span>
-                </div>
-              </div>
-              <div class="p-6 space-y-3">
-                <div class="text-xs font-mono text-emerald-400 font-semibold">Custom Theme Engine &bull; EDMs &bull; Client Solutions</div>
-                <h3 class="text-xl font-bold font-heading text-white">Pizeonfly Client Portals</h3>
-                <p class="text-sm text-slate-300 line-clamp-2">
-                  Development and maintenance of 30+ responsive client websites, email marketing newsletters, and graphic marketing collateral over a 2-year period.
-                </p>
-                <div class="flex flex-wrap gap-1.5 pt-1">
-                  <span class="badge-pill text-[11px]">WordPress</span>
-                  <span class="badge-pill text-[11px]">HTML5 / CSS3</span>
-                  <span class="badge-pill text-[11px]">Elementor</span>
-                </div>
-              </div>
-            </div>
-            <div class="p-6 pt-0">
-              <button type="button" class="open-project-btn w-full py-2.5 rounded-xl bg-slate-800 hover:bg-emerald-600 text-slate-200 hover:text-white text-xs font-bold transition-colors flex items-center justify-center gap-2" data-project="pizeonfly">
-                <span>View Project Case Study</span>
-                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-              </button>
-            </div>
-          </div>
-
-          <!-- Project 6: Portrait & Commercial Photography -->
-          <div class="project-card interactive-card glass-panel overflow-hidden flex flex-col justify-between" data-category="photo design">
-            <div>
-              <div class="relative overflow-hidden group bg-slate-900 border-b border-slate-800 h-52">
-                <img src="assets/images/photography.svg" alt="Portrait and Commercial Photography" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                <div class="absolute top-3 left-3">
-                  <span class="px-2.5 py-1 rounded-md text-[11px] font-bold bg-pink-500/20 text-pink-300 border border-pink-500/30 backdrop-blur-md">
-                    Studio Photography
-                  </span>
-                </div>
-              </div>
-              <div class="p-6 space-y-3">
-                <div class="text-xs font-mono text-pink-400 font-semibold">Portraiture &bull; Product Imagery &bull; Lightroom</div>
-                <h3 class="text-xl font-bold font-heading text-white">Commercial Photography Studio</h3>
-                <p class="text-sm text-slate-300 line-clamp-2">
-                  Specialized portrait photography and commercial product shoots for brand campaigns, executive headshots, and e-commerce catalogs.
-                </p>
-                <div class="flex flex-wrap gap-1.5 pt-1">
-                  <span class="badge-pill text-[11px]">Lightroom</span>
-                  <span class="badge-pill text-[11px]">Photoshop Retouch</span>
-                  <span class="badge-pill text-[11px]">Studio Lighting</span>
-                </div>
-              </div>
-            </div>
-            <div class="p-6 pt-0">
-              <button type="button" class="open-project-btn w-full py-2.5 rounded-xl bg-slate-800 hover:bg-pink-600 text-slate-200 hover:text-white text-xs font-bold transition-colors flex items-center justify-center gap-2" data-project="photography-suite">
-                <span>View Project Case Study</span>
-                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-              </button>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ===================================================================
-         SERVICES OFFERED
-         =================================================================== -->
-    <section id="services" class="py-20 lg:py-28">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <span class="text-xs font-mono font-bold tracking-widest uppercase text-indigo-400">What I Offer</span>
-          <h2 class="text-3xl sm:text-5xl font-black font-heading text-white tracking-tight">
-            Comprehensive <span class="gradient-text">Services</span> &amp; Solutions
-          </h2>
-          <p class="text-slate-400 text-sm sm:text-base">
-            From zero to launch — end-to-end website engineering, creative graphics, and technical systems support.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          
-          <div class="glass-panel p-8 space-y-4 interactive-card">
-            <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 text-2xl">
-              <i class="fa-solid fa-laptop-code"></i>
-            </div>
-            <h3 class="text-xl font-bold font-heading text-white">Custom Web Development</h3>
-            <p class="text-sm text-slate-300 leading-relaxed">
-              Bespoke WordPress, Shopify, and HTML/CSS web portals engineered for maximum speed, pixel-perfect responsiveness, and smooth mobile usability.
-            </p>
-            <ul class="text-xs text-slate-400 space-y-1 pt-2">
-              <li>&bull; Elementor, Divi &amp; WP Builders</li>
-              <li>&bull; Custom Child Themes &amp; Plugins</li>
-              <li>&bull; Responsive Cross-Browser UI</li>
-            </ul>
-          </div>
-
-          <div class="glass-panel p-8 space-y-4 interactive-card">
-            <div class="w-12 h-12 rounded-xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400 text-2xl">
-              <i class="fa-solid fa-paintbrush"></i>
-            </div>
-            <h3 class="text-xl font-bold font-heading text-white">UI/UX &amp; Graphic Design</h3>
-            <p class="text-sm text-slate-300 leading-relaxed">
-              Eye-catching logos, branding guidelines, social media ad sets, brochures, marketing banners, and high-fidelity Figma user interface designs.
-            </p>
-            <ul class="text-xs text-slate-400 space-y-1 pt-2">
-              <li>&bull; Photoshop &amp; Illustrator Mastery</li>
-              <li>&bull; Social Media Posts &amp; Banners</li>
-              <li>&bull; Logo &amp; Corporate Identity Design</li>
-            </ul>
-          </div>
-
-          <div class="glass-panel p-8 space-y-4 interactive-card">
-            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-2xl">
-              <i class="fa-solid fa-cart-shopping"></i>
-            </div>
-            <h3 class="text-xl font-bold font-heading text-white">E-Commerce Solutions</h3>
-            <p class="text-sm text-slate-300 leading-relaxed">
-              Complete Shopify and WooCommerce storefronts with customized product filtering, payment gateways, invoice systems, and inventory workflows.
-            </p>
-            <ul class="text-xs text-slate-400 space-y-1 pt-2">
-              <li>&bull; WooCommerce Catalog Setup</li>
-              <li>&bull; Shopify Theme Customization</li>
-              <li>&bull; Conversion-Optimized Checkout</li>
-            </ul>
-          </div>
-
-          <div class="glass-panel p-8 space-y-4 interactive-card">
-            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 text-2xl">
-              <i class="fa-solid fa-cloud-arrow-up"></i>
-            </div>
-            <h3 class="text-xl font-bold font-heading text-white">Hosting, Domain &amp; SSL</h3>
-            <p class="text-sm text-slate-300 leading-relaxed">
-              Stress-free server deployment: DNS record routing, cPanel setup, SSL encryption certificates, local environments, and regular automated backups.
-            </p>
-            <ul class="text-xs text-slate-400 space-y-1 pt-2">
-              <li>&bull; Domain &amp; DNS Management</li>
-              <li>&bull; Let's Encrypt / Cloudflare SSL</li>
-              <li>&bull; Uptime &amp; Malware Protection</li>
-            </ul>
-          </div>
-
-          <div class="glass-panel p-8 space-y-4 interactive-card">
-            <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 text-2xl">
-              <i class="fa-solid fa-camera"></i>
-            </div>
-            <h3 class="text-xl font-bold font-heading text-white">Commercial Photography</h3>
-            <p class="text-sm text-slate-300 leading-relaxed">
-              Elevate your website visuals with crisp portraiture, corporate leadership headshots, and high-definition commercial product photography.
-            </p>
-            <ul class="text-xs text-slate-400 space-y-1 pt-2">
-              <li>&bull; Executive &amp; Team Portraits</li>
-              <li>&bull; E-Commerce Product Studio</li>
-              <li>&bull; Adobe Lightroom Color Grading</li>
-            </ul>
-          </div>
-
-          <div class="glass-panel p-8 space-y-4 interactive-card">
-            <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 text-2xl">
-              <i class="fa-solid fa-headset"></i>
-            </div>
-            <h3 class="text-xl font-bold font-heading text-white">Technical IT &amp; Remote Support</h3>
-            <p class="text-sm text-slate-300 leading-relaxed">
-              Rapid troubleshooting via AnyDesk or TeamViewer for Windows/Linux OS, email server configuration, hardware/networking fixes, and web debugging.
-            </p>
-            <ul class="text-xs text-slate-400 space-y-1 pt-2">
-              <li>&bull; Remote Debugging via AnyDesk</li>
-              <li>&bull; OS Installation &amp; Configuration</li>
-              <li>&bull; Email &amp; Web Server Diagnostics</li>
-            </ul>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ===================================================================
-         CONTACT SECTION
-         =================================================================== -->
-    <section id="contact" class="py-20 lg:py-28 bg-slate-950/60 relative">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <span class="text-xs font-mono font-bold tracking-widest uppercase text-indigo-400">Get In Touch</span>
-          <h2 class="text-3xl sm:text-5xl font-black font-heading text-white tracking-tight">
-            Let's Build Something <span class="gradient-text">Exceptional</span> Together
-          </h2>
-          <p class="text-slate-400 text-sm sm:text-base">
-            Have a project in mind, need a high-converting website, or looking to hire a dedicated developer &amp; designer? Send me a message!
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
-          <!-- Contact Details Cards -->
-          <div class="lg:col-span-5 space-y-6">
-            
-            <!-- WhatsApp Highlight Card -->
-            <div class="glass-panel p-6 sm:p-7 space-y-4 border-emerald-500/30 bg-emerald-950/20">
-              <div class="flex items-center gap-3">
-                <div class="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl">
-                  <i class="fa-brands fa-whatsapp"></i>
-                </div>
-                <div>
-                  <h4 class="text-lg font-bold font-heading text-white">Instant WhatsApp Chat</h4>
-                  <p class="text-xs text-slate-400">Fastest response for urgent projects</p>
-                </div>
-              </div>
-              <p class="text-xs text-slate-300">
-                Directly connect with Mohd Aadil to discuss project requirements, timelines, and estimates.
-              </p>
-              <a href="https://wa.me/917217627771?text=Hi%20Mohd%20Aadil,%20I'd%20like%20to%20discuss%20a%20project%20with%20you." target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-lg shadow-emerald-600/30 transition-all">
-                <i class="fa-brands fa-whatsapp text-base"></i> Chat on WhatsApp (+91 7217627771)
-              </a>
-            </div>
-
-            <!-- Email Card -->
-            <div class="glass-panel p-6 space-y-2">
-              <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-lg">
-                  <i class="fa-solid fa-envelope"></i>
-                </div>
-                <div>
-                  <span class="text-xs font-mono text-slate-400 block">Direct Email</span>
-                  <a href="mailto:adilkhans07082018@gmail.com" class="text-sm sm:text-base font-bold text-white hover:text-indigo-400 transition-colors">
-                    adilkhans07082018@gmail.com
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Phone Card -->
-            <div class="glass-panel p-6 space-y-2">
-              <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-lg">
-                  <i class="fa-solid fa-phone"></i>
-                </div>
-                <div>
-                  <span class="text-xs font-mono text-slate-400 block">Direct Call / Mobile</span>
-                  <a href="tel:+917217627771" class="text-sm sm:text-base font-bold text-white hover:text-cyan-400 transition-colors">
-                    +91 721-762-7771
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Address Card -->
-            <div class="glass-panel p-6 space-y-2">
-              <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-lg bg-rose-500/10 text-rose-400 flex items-center justify-center text-lg">
-                  <i class="fa-solid fa-map-location-dot"></i>
-                </div>
-                <div>
-                  <span class="text-xs font-mono text-slate-400 block">Office / Location</span>
-                  <p class="text-xs sm:text-sm font-semibold text-slate-200">
-                    1611C/13, Gali No.13, Govindpuri, Kalkaji, New Delhi - 110019
-                  </p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- Working Interactive Contact Form -->
-          <div class="lg:col-span-7 glass-panel p-8 sm:p-10 space-y-6">
-            <h3 class="text-2xl font-bold font-heading text-white flex items-center gap-3">
-              <i class="fa-solid fa-paper-plane text-indigo-400"></i>
-              Send a Direct Message
-            </h3>
-            
-            <form id="contact-form" class="space-y-4">
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div class="space-y-1.5">
-                  <label for="sender-name" class="block text-xs font-semibold text-slate-300">Your Full Name *</label>
-                  <input type="text" id="sender-name" required placeholder="e.g. John Doe" class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 focus:border-indigo-500 focus:outline-none text-sm text-white placeholder-slate-500 transition-colors">
-                </div>
-                <div class="space-y-1.5">
-                  <label for="sender-email" class="block text-xs font-semibold text-slate-300">Your Email Address *</label>
-                  <input type="email" id="sender-email" required placeholder="name@company.com" class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 focus:border-indigo-500 focus:outline-none text-sm text-white placeholder-slate-500 transition-colors">
-                </div>
-              </div>
-
-              <div class="space-y-1.5">
-                <label for="sender-subject" class="block text-xs font-semibold text-slate-300">Project Type / Subject</label>
-                <input type="text" id="sender-subject" placeholder="e.g. New Website Development / WordPress Project" class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 focus:border-indigo-500 focus:outline-none text-sm text-white placeholder-slate-500 transition-colors">
-              </div>
-
-              <div class="space-y-1.5">
-                <label for="sender-message" class="block text-xs font-semibold text-slate-300">Message &amp; Project Scope *</label>
-                <textarea id="sender-message" required rows="5" placeholder="Tell Mohd Aadil about your project goals, deadlines, and requirements..." class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 focus:border-indigo-500 focus:outline-none text-sm text-white placeholder-slate-500 transition-colors resize-none"></textarea>
-              </div>
-
-              <button type="submit" class="w-full py-4 rounded-xl font-bold text-sm bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:opacity-95 text-white shadow-xl shadow-indigo-500/25 transition-all flex items-center justify-center gap-2">
-                <i class="fa-solid fa-paper-plane text-xs"></i>
-                <span>Send Message to Mohd Aadil</span>
-              </button>
-
-              <p class="text-[11px] text-center text-slate-400">
-                Messages are directly delivered to <strong class="text-indigo-400 font-semibold">adilkhans07082018@gmail.com</strong>.
-              </p>
-            </form>
-          </div>
-
-        </div>
-
+    <!-- ============ CONTACT ============ -->
+    <section class="contact" id="contact">
+      <span class="mono tag">07 — Pit Wall</span>
+      <h2 class="contact__big js-contact-big" data-cursor="Email">
+        <a href="mailto:adilkhans07082018@gmail.com">
+          <span class="contact__line">Let's build</span>
+          <span class="contact__line contact__line--outline">something fast</span>
+        </a>
+      </h2>
+      <div class="contact__actions">
+        <a class="btn btn--lime btn--lg" href="mailto:adilkhans07082018@gmail.com" data-magnetic><span>adilkhans07082018@gmail.com</span></a>
+        <a class="btn btn--ghost btn--lg" href="https://wa.me/917217627771?text=Hi%20Mohd%20Aadil,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener" data-magnetic><span>WhatsApp: +91 721-762-7771 ↗</span></a>
+        <a class="btn btn--ghost btn--lg" href="tel:+917217627771" data-magnetic><span>Call Direct ↗</span></a>
       </div>
     </section>
   </main>
 
-  <!-- ===================================================================
-       FOOTER
-       =================================================================== -->
-  <footer class="border-t border-slate-800 bg-slate-950 py-12 relative z-10 text-sm overflow-x-hidden w-full">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-        
-        <div class="flex items-center gap-3">
-          <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 to-pink-500 p-[2px]">
-            <div class="w-full h-full bg-slate-900 rounded-[10px] flex items-center justify-center font-heading font-black text-white text-xs">
-              MA
-            </div>
-          </div>
-          <div>
-            <span class="font-heading font-bold text-white">Mohd Aadil</span>
-            <span class="block text-xs text-slate-400">Website Developer &bull; Graphic Designer</span>
-          </div>
-        </div>
-
-        <div class="flex flex-wrap items-center justify-center gap-6 text-xs text-slate-400">
-          <a href="#about" class="hover:text-white transition-colors">About</a>
-          <a href="#skills" class="hover:text-white transition-colors">Skills</a>
-          <a href="#experience" class="hover:text-white transition-colors">Experience</a>
-          <a href="#projects" class="hover:text-white transition-colors">Portfolio</a>
-          <a href="#contact" class="hover:text-white transition-colors">Contact</a>
-          <button type="button" class="open-resume-btn hover:text-indigo-400 transition-colors">Resume</button>
-        </div>
-
-        <div class="text-xs text-slate-400 text-center md:text-right">
-          &copy; <span id="current-year">2026</span> Mohd Aadil. All rights reserved.
-          <div class="text-[11px] text-slate-400 pt-0.5">Designed with precision &amp; modern web standards</div>
-        </div>
-
-      </div>
+  <footer class="footer">
+    <div class="footer__sign">Mohd Aadil</div>
+    <div class="footer__row mono">
+      <span>© <span class="js-year">2026</span> Mohd Aadil</span>
+      <span class="js-clock">--:--:-- IST</span>
+      <a href="#top" class="link-roll"><span data-text="Back to top ↑">Back to top ↑</span></a>
     </div>
   </footer>
 
-  <!-- ===================================================================
-       BACK TO TOP BUTTON
-       =================================================================== -->
-  <button id="back-to-top" type="button" aria-label="Back to Top" class="fixed bottom-6 right-6 z-40 w-11 h-11 rounded-full bg-indigo-600 hover:bg-indigo-500 text-white shadow-xl shadow-indigo-600/30 flex items-center justify-center opacity-0 pointer-events-none translate-y-4 transition-all duration-300">
-    <i class="fa-solid fa-arrow-up text-sm"></i>
-  </button>
-
-  <!-- ===================================================================
-       TOAST NOTIFICATION COMPONENT
-       =================================================================== -->
-  <div id="toast-notification" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 glass-panel px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 border border-indigo-500/30 w-max max-w-[calc(100vw-2rem)]">
-    <i id="toast-icon" class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
-    <span id="toast-message" class="text-xs sm:text-sm font-medium text-white">Notification message</span>
-  </div>
-
-  <!-- ===================================================================
-       PROJECT DETAIL MODAL
-       =================================================================== -->
-  <div id="project-modal" class="modal-backdrop fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
-    <div class="modal-content glass-panel w-full max-w-3xl overflow-hidden relative border border-slate-700/80 shadow-2xl my-auto">
-      
-      <!-- Close Button -->
-      <button id="project-modal-close" type="button" aria-label="Close Project Modal" class="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-slate-900/80 hover:bg-slate-800 text-slate-300 hover:text-white flex items-center justify-center border border-slate-700 transition-colors">
-        <i class="fa-solid fa-xmark text-sm"></i>
-      </button>
-
-      <!-- Project Image Preview Mockup -->
-      <div class="relative h-64 sm:h-80 bg-slate-900 border-b border-slate-800 overflow-hidden">
-        <img id="modal-image" src="assets/images/paul-walter.svg" alt="Project Preview" class="w-full h-full object-cover">
-        <div class="absolute bottom-4 left-4">
-          <span id="modal-badge" class="px-3 py-1 rounded-md text-xs font-bold bg-indigo-600 text-white shadow-md">
-            Featured
-          </span>
-        </div>
-      </div>
-
-      <!-- Project Details Body -->
-      <div class="p-6 sm:p-8 space-y-6 max-h-[60vh] overflow-y-auto">
-        <div>
-          <span id="modal-category" class="text-xs font-mono text-indigo-400 font-semibold block">Category</span>
-          <h3 id="modal-title" class="text-2xl sm:text-3xl font-black font-heading text-white">Project Title</h3>
-        </div>
-
-        <div class="grid grid-cols-2 gap-4 p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-xs font-mono">
-          <div>
-            <span class="text-slate-400 block">Client / Organization:</span>
-            <span id="modal-client" class="text-white font-semibold">Client Name</span>
-          </div>
-          <div>
-            <span class="text-slate-400 block">Timeline / Duration:</span>
-            <span id="modal-year" class="text-emerald-400 font-semibold">2023 - 2024</span>
-          </div>
-        </div>
-
-        <div class="space-y-2">
-          <h4 class="text-sm font-bold font-heading uppercase tracking-wider text-slate-300">Project Overview</h4>
-          <p id="modal-summary" class="text-sm text-slate-300 leading-relaxed"></p>
-        </div>
-
-        <div class="space-y-3">
-          <h4 class="text-sm font-bold font-heading uppercase tracking-wider text-slate-300">Key Deliverables &amp; Achievements</h4>
-          <ul id="modal-features" class="space-y-2"></ul>
-        </div>
-
-        <div class="space-y-2 pt-2 border-t border-slate-800">
-          <h4 class="text-xs font-mono uppercase tracking-wider text-slate-400">Technologies &amp; Tools Used:</h4>
-          <div id="modal-tech" class="flex flex-wrap gap-2"></div>
-        </div>
-
-        <div class="pt-4 flex flex-wrap gap-3">
-          <a href="#contact" onclick="document.getElementById('project-modal-close').click()" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs flex items-center gap-2">
-            <span>Inquire About Similar Project</span>
-            <i class="fa-solid fa-arrow-right text-[10px]"></i>
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ===================================================================
-       RESUME VIEWER & PRINT MODAL
-       =================================================================== -->
-  <div id="resume-modal" class="modal-backdrop fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
-    <div class="modal-content glass-panel w-full max-w-4xl max-h-[92vh] flex flex-col relative border border-slate-700/80 shadow-2xl my-auto bg-slate-900">
-      
-      <!-- Modal Top Action Header -->
-      <div class="flex items-center justify-between p-4 sm:p-5 border-b border-slate-800 bg-slate-950/70">
-        <div class="flex items-center gap-2">
-          <i class="fa-solid fa-file-invoice text-indigo-400 text-lg"></i>
-          <span class="font-heading font-bold text-white text-base">Mohd Aadil — Curriculum Vitae</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <button id="print-resume-btn" type="button" class="px-3.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold flex items-center gap-2 transition-colors">
-            <i class="fa-solid fa-print"></i> Print / Save PDF
-          </button>
-          <button id="resume-modal-close" type="button" aria-label="Close Resume" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center transition-colors">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-        </div>
-      </div>
-
-      <!-- Printable Resume Body -->
-      <div id="printable-resume" class="p-6 sm:p-10 overflow-y-auto space-y-8 bg-slate-900 text-slate-200">
-        
-        <!-- Header Info -->
-        <div class="border-b border-slate-700 pb-6 space-y-3">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-            <div>
-              <h1 class="text-3xl font-black font-heading text-white">MOHD AADIL</h1>
-              <p class="text-indigo-400 font-bold text-sm tracking-wider uppercase">WEB &amp; GRAPHIC DESIGNER</p>
-            </div>
-            <div class="text-xs font-mono space-y-1 text-slate-300">
-              <div><i class="fa-solid fa-phone text-emerald-400 mr-1.5"></i> +91 721-762-7771</div>
-              <div><i class="fa-solid fa-envelope text-indigo-400 mr-1.5"></i> adilkhans07082018@gmail.com</div>
-              <div><i class="fa-solid fa-location-dot text-rose-400 mr-1.5"></i> Govindpuri, Kalkaji, New Delhi - 110019</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- About Me -->
-        <div class="space-y-2">
-          <h2 class="text-xs font-mono uppercase tracking-widest text-indigo-400 font-bold border-b border-slate-800 pb-1">ABOUT ME</h2>
-          <p class="text-sm text-slate-300 leading-relaxed">
-            Motivated and detail-oriented Website &amp; Graphic Designer with experience in digital marketing, photography, and technical troubleshooting. Seeking an opportunity in a dynamic and challenging environment to apply my creative and technical skills while contributing to organizational growth.
-          </p>
-        </div>
-
-        <!-- Work Experience -->
-        <div class="space-y-4">
-          <h2 class="text-xs font-mono uppercase tracking-widest text-indigo-400 font-bold border-b border-slate-800 pb-1">WORK EXPERIENCE</h2>
-          
-          <div class="space-y-1">
-            <div class="flex justify-between items-baseline">
-              <h3 class="text-base font-bold text-white">Indus Connections</h3>
-              <span class="text-xs font-mono text-indigo-400 font-semibold">2022 – PRESENT</span>
-            </div>
-            <p class="text-xs font-semibold text-slate-300">Website Designer, Graphic Designer, Digital Marketer &amp; Photographer</p>
-            <ul class="list-disc list-inside text-xs text-slate-300 space-y-1 pt-1">
-              <li>Designed and managed websites using WordPress and other platforms.</li>
-              <li>Created promotional graphics, logos, brochures, and social media creatives.</li>
-              <li>Handled digital marketing campaigns and content management.</li>
-              <li>Conducted product and portrait photography for branding purposes.</li>
-            </ul>
-          </div>
-
-          <div class="space-y-1 pt-2">
-            <div class="flex justify-between items-baseline">
-              <h3 class="text-base font-bold text-white">Red Dash Media</h3>
-              <span class="text-xs font-mono text-slate-400">2021 (6 MONTHS)</span>
-            </div>
-            <p class="text-xs font-semibold text-slate-300">Website &amp; Graphic Designer</p>
-            <ul class="list-disc list-inside text-xs text-slate-300 space-y-1 pt-1">
-              <li>Supported website development and graphic design projects.</li>
-              <li>Assisted in social media content creation and brand promotion.</li>
-            </ul>
-          </div>
-
-          <div class="space-y-1 pt-2">
-            <div class="flex justify-between items-baseline">
-              <h3 class="text-base font-bold text-white">Pizeonfly</h3>
-              <span class="text-xs font-mono text-slate-400">2018 – 2020 (2 YEARS)</span>
-            </div>
-            <p class="text-xs font-semibold text-slate-300">Website &amp; Graphic Designer</p>
-            <ul class="list-disc list-inside text-xs text-slate-300 space-y-1 pt-1">
-              <li>Developed and maintained multiple websites with WordPress and custom themes.</li>
-              <li>Designed marketing materials including newsletters, email templates, and banners.</li>
-              <li>Coordinated with clients to deliver creative solutions as per requirements.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Core Skills -->
-        <div class="space-y-3">
-          <h2 class="text-xs font-mono uppercase tracking-widest text-indigo-400 font-bold border-b border-slate-800 pb-1">CORE SKILLS</h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-300">
-            <div>
-              <strong class="text-white">Design &amp; Creative Tools:</strong> Photoshop, Illustrator, Lightroom, Premiere Pro, CorelDraw, Figma
-            </div>
-            <div>
-              <strong class="text-white">Web Development &amp; CMS:</strong> WordPress (Elementor, Divi, WP Builders), Shopify, HTML, CSS
-            </div>
-            <div>
-              <strong class="text-white">Digital Marketing:</strong> Social Media Management, Email Marketing, SEO Basics, Blog Management
-            </div>
-            <div>
-              <strong class="text-white">Technical Skills:</strong> OS Installation (Windows/Linux), Hardware &amp; Network Troubleshooting, Remote Support (AnyDesk, TeamViewer), Domain &amp; Hosting Setup, SSL &amp; Localhost Configuration
-            </div>
-            <div>
-              <strong class="text-white">AI Tools:</strong> Antigravity, ChatGPT, Claude, Google Gemini, Google Flow, Figma AI
-            </div>
-            <div>
-              <strong class="text-white">Other:</strong> Logo &amp; Brochure Design, Video Editing, PDF Editing, Data Mining &amp; Email Extraction
-            </div>
-          </div>
-        </div>
-
-        <!-- Education & Personal Details -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
-          <div class="space-y-2">
-            <h2 class="text-xs font-mono uppercase tracking-widest text-indigo-400 font-bold border-b border-slate-800 pb-1">EDUCATION</h2>
-            <div class="text-xs space-y-2 text-slate-300">
-              <div>
-                <strong class="text-white">SVS UNIVERSITY</strong> (2018 – 2021)
-                <div>B.A. (Hons.) in History &amp; Political Science</div>
-              </div>
-              <div>
-                <strong class="text-white">K.G.S.B.V CHIRAG ENCLAVE</strong> (2018)
-                <div>Senior Secondary (12th) (CBSE)</div>
-              </div>
-              <div>
-                <strong class="text-white">K.G.S.B.V CHIRAG ENCLAVE</strong> (2015)
-                <div>Secondary (10th) (CBSE)</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="space-y-2">
-            <h2 class="text-xs font-mono uppercase tracking-widest text-indigo-400 font-bold border-b border-slate-800 pb-1">PERSONAL DETAILS</h2>
-            <div class="text-xs space-y-1 text-slate-300">
-              <div><strong class="text-white">Date of Birth:</strong> 7th April 1999</div>
-              <div><strong class="text-white">Father's Name:</strong> Javed</div>
-              <div><strong class="text-white">Nationality:</strong> Indian &bull; Single</div>
-              <div><strong class="text-white">Languages:</strong> English, Hindi, Urdu</div>
-              <div><strong class="text-white">Hobbies:</strong> Portrait Photography</div>
-              <div><strong class="text-white">Portfolio References:</strong> Paul Walter &bull; The Wash Basins Company</div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </div>
-
-  <!-- JavaScript Initialization -->
-  <script src="js/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>
